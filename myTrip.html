@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="리장, 세부, 홋카이도 여행 사진과 브이로그를 담은 앨범입니다.">
+    <meta name="theme-color" content="#4f46e5">
+    <meta property="og:image" content="../media/리장.jpg">
+    <title>나의 여행 앨범 | 박기연의 유니버스</title>
+    <link rel="stylesheet" href="../css/trendy.css">
+</head>
+
+<body>
+    <a class="skip-link" href="#main">본문 바로가기</a>
+
+    <div class="container">
+
+        <nav aria-label="이동 경로">
+            <ol class="breadcrumb">
+                <li><a href="index.html">홈</a></li>
+                <li aria-current="page">여행 앨범</li>
+            </ol>
+        </nav>
+
+        <header class="page-header">
+            <p class="kicker">ALBUM</p>
+            <hgroup>
+                <h1>나의 여행 앨범</h1>
+                <p>사진 3장과 브이로그 1편, 그리고 배경 음악 한 곡</p>
+            </hgroup>
+
+            <section aria-labelledby="bgm-title" class="bgm" data-component="audio-player">
+                <h2 id="bgm-title">앨범 배경 음악</h2>
+                <audio controls preload="metadata">
+                    <source src="../media/music.mp3" type="audio/mpeg">
+                    이 브라우저는 오디오 재생을 지원하지 않습니다.
+                    <a href="../media/music.mp3" download>음악 파일 내려받기</a>
+                </audio>
+            </section>
+        </header>
+
+        <main id="main">
+
+            <!-- ============ 사진 갤러리 ============ -->
+            <section aria-labelledby="gallery-title">
+                <p class="kicker">GALLERY</p>
+                <h2 id="gallery-title">사진 갤러리</h2>
+
+                <ul class="trip-grid-container" data-component="gallery">
+                    <li>
+                        <figure class="trip-card">
+                            <img src="../media/리장.jpg" width="400" height="200"
+                                alt="깊은 협곡 너머로 눈 덮인 옥룡설산 봉우리가 늘어선 중국 리장 호도협의 전경"
+                                loading="lazy" decoding="async">
+                            <figcaption>
+                                <span class="trip-card__index">01</span>
+                                <strong>리장 호도협</strong>
+                                <small>중국 · <time datetime="2025">2025</time></small>
+                            </figcaption>
+                        </figure>
+                    </li>
+                    <li>
+                        <figure class="trip-card">
+                            <img src="../media/세부.jpg" width="400" height="200"
+                                alt="언덕 전망대에서 내려다본 필리핀 세부 시내의 야경"
+                                loading="lazy" decoding="async">
+                            <figcaption>
+                                <span class="trip-card__index">02</span>
+                                <strong>세부 탑스힐</strong>
+                                <small>필리핀 · <time datetime="2024-12-31">2024</time></small>
+                            </figcaption>
+                        </figure>
+                    </li>
+                    <li>
+                        <figure class="trip-card">
+                            <img src="../media/홋카이도.jpg" width="400" height="200"
+                                alt="눈 덮인 들판 너머로 완만한 설산이 이어지는 일본 홋카이도의 겨울 풍경"
+                                loading="lazy" decoding="async">
+                            <figcaption>
+                                <span class="trip-card__index">03</span>
+                                <strong>홋카이도 대설산</strong>
+                                <small>일본 · <time datetime="2025-04-01">2025</time></small>
+                            </figcaption>
+                        </figure>
+                    </li>
+                </ul>
+
+                <details class="accordion">
+                    <summary>여행 한 줄 후기 보기</summary>
+                    <dl>
+                        <dt>리장 호도협</dt>
+                        <dd>협곡을 따라 걷다 고개를 들면 설산이 계속 따라옵니다. 사진보다 실제가 훨씬 큽니다.</dd>
+                        <dt>세부 탑스힐</dt>
+                        <dd>해가 진 직후에 올라가면 도시 불빛이 켜지는 순간을 볼 수 있습니다.</dd>
+                        <dt>홋카이도 대설산</dt>
+                        <dd>4월인데도 들판이 온통 눈이었습니다. 공기가 유난히 맑았던 곳.</dd>
+                    </dl>
+                </details>
+            </section>
+
+            <!-- ============ 브이로그 ============ -->
+            <section aria-labelledby="vlog-title">
+                <p class="kicker">VLOG</p>
+                <h2 id="vlog-title">여행 브이로그</h2>
+
+                <figure class="media-card" data-component="video-player">
+                    <video width="400" height="225" controls playsinline preload="metadata"
+                        poster="../media/리장.jpg">
+                        <source src="../media/video.mp4" type="video/mp4">
+                        이 브라우저는 비디오 재생을 지원하지 않습니다.
+                        <a href="../media/video.mp4" download>영상 파일 내려받기</a>
+                    </video>
+                    <figcaption>여행지에서 직접 찍은 짧은 영상</figcaption>
+                </figure>
+            </section>
+
+        </main>
+
+        <footer class="site-footer">
+            <p><a href="index.html">&larr; 홈으로 돌아가기</a></p>
+            <p><small>&copy; <time datetime="2026">2026</time> 기연 포트폴리오</small></p>
+        </footer>
+
+    </div>
+</body>
+
+</html>

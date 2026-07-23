@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="좋아하는 음식, 올해의 목표, 나를 설명하는 키워드를 담은 프로필 페이지입니다.">
+    <meta name="theme-color" content="#4f46e5">
+    <title>나의 프로필 | 박기연의 유니버스</title>
+    <link rel="stylesheet" href="../css/trendy.css">
+</head>
+
+<body>
+    <a class="skip-link" href="#main">본문 바로가기</a>
+
+    <div class="container">
+
+        <nav aria-label="이동 경로">
+            <ol class="breadcrumb">
+                <li><a href="index.html">홈</a></li>
+                <li aria-current="page">프로필</li>
+            </ol>
+        </nav>
+
+        <header class="page-header" data-component="profile-hero">
+            <p class="kicker">ABOUT ME</p>
+            <hgroup>
+                <h1>안녕하세요, 박기연입니다</h1>
+                <p>좋아하는 것들과 올해의 계획, 그리고 저를 표현하는 단어들입니다.</p>
+            </hgroup>
+            <ul class="chip-list" data-component="chips">
+                <li><span class="chip">프론트엔드</span></li>
+                <li><span class="chip">아이스 아메리카노</span></li>
+                <li><span class="chip">여행</span></li>
+            </ul>
+        </header>
+
+        <main id="main">
+
+            <!-- ============ 좋아하는 음식 ============ -->
+            <section aria-labelledby="food-title">
+                <p class="kicker">01 — TASTE</p>
+                <h2 id="food-title">내가 좋아하는 음식</h2>
+                <ul class="card-grid" data-component="tag-cards">
+                    <li class="card">
+                        <strong>아이스 아메리카노</strong>
+                        <p>계절과 상관없이 사계절 내내 마십니다.</p>
+                    </li>
+                    <li class="card">
+                        <strong>고기</strong>
+                        <p>스트레스 받은 날의 확실한 해결책.</p>
+                    </li>
+                    <li class="card">
+                        <strong>초코</strong>
+                        <p>코딩할 때 당 충전용 필수템.</p>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- ============ 올해 할 일 ============ -->
+            <section aria-labelledby="goal-title">
+                <p class="kicker">02 — GOALS</p>
+                <h2 id="goal-title">올해 할 일</h2>
+
+                <p class="section-summary">
+                    <span class="stat__value">62<small class="stat__unit">%</small></span>
+                    <span>전체 진행률</span>
+                </p>
+
+                <!-- 채움(.bar__fill)은 CSS로 그립니다. 값은 data-value(%)를 참고하세요. -->
+                <ol class="goal-list" data-component="goal-list">
+                    <li class="goal">
+                        <p class="goal__head">
+                            <span class="goal__index">01</span>
+                            <strong id="goal-book">일주일에 책 한 권씩 읽기</strong>
+                            <span class="goal__count">29 <small>/ 52권</small></span>
+                        </p>
+                        <span class="bar" role="progressbar" aria-labelledby="goal-book"
+                            aria-valuemin="0" aria-valuemax="52" aria-valuenow="29" data-value="56">
+                            <span class="bar__fill"></span>
+                        </span>
+                    </li>
+
+                    <li class="goal">
+                        <p class="goal__head">
+                            <span class="goal__index">02</span>
+                            <strong id="goal-fit">꾸준히 운동해서 체력 키우기</strong>
+                            <span class="goal__count">45 <small>%</small></span>
+                        </p>
+                        <span class="bar" role="progressbar" aria-labelledby="goal-fit"
+                            aria-valuemin="0" aria-valuemax="100" aria-valuenow="45" data-value="45">
+                            <span class="bar__fill"></span>
+                        </span>
+                        <small class="goal__note">주 3회 목표 기준</small>
+                    </li>
+
+                    <li class="goal">
+                        <p class="goal__head">
+                            <span class="goal__index">03</span>
+                            <strong id="goal-lang">새로운 프로그래밍 언어 배우기</strong>
+                            <span class="goal__count">80 <small>%</small></span>
+                        </p>
+                        <span class="bar" role="progressbar" aria-labelledby="goal-lang"
+                            aria-valuemin="0" aria-valuemax="100" aria-valuenow="80" data-value="80">
+                            <span class="bar__fill"></span>
+                        </span>
+                        <small class="goal__note">JavaScript 심화 학습 중</small>
+                    </li>
+                </ol>
+            </section>
+
+            <!-- ============ 나를 설명하는 단어 ============ -->
+            <section aria-labelledby="keyword-title">
+                <p class="kicker">03 — KEYWORDS</p>
+                <h2 id="keyword-title">나를 설명하는 단어들</h2>
+
+                <dl class="definition-cards" data-component="keyword-cards">
+                    <div class="definition-card">
+                        <dt>호기심</dt>
+                        <dd>새로운 기술이나 흥미로운 트렌드를 보면 직접 경험해보고 배워야 직성이 풀립니다.</dd>
+                    </div>
+                    <div class="definition-card">
+                        <dt>꾸준함</dt>
+                        <dd>매일 작은 계획이라도 세우고 그것을 지키기 위해 노력하는 성실함을 가지고 있습니다.</dd>
+                    </div>
+                    <div class="definition-card">
+                        <dt>크리에이티브</dt>
+                        <dd>단순한 결과물보다는 사용자에게 더 나은 경험과 시각적인 즐거움을 주는 것을 좋아합니다.</dd>
+                    </div>
+                </dl>
+
+                <details class="accordion">
+                    <summary>조금 더 자세한 이야기</summary>
+                    <blockquote>
+                        <p>배우고 싶은 것이 생기면 일단 만들어 보면서 익히는 편입니다.</p>
+                        <footer>— <cite>나의 개발 원칙</cite></footer>
+                    </blockquote>
+                </details>
+            </section>
+
+        </main>
+
+        <footer class="site-footer">
+            <p><a href="index.html">&larr; 홈으로 돌아가기</a></p>
+            <p><small>&copy; <time datetime="2026">2026</time> 기연 포트폴리오</small></p>
+        </footer>
+
+    </div>
+</body>
+
+</html>

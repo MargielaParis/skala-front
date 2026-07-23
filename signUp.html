@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SKALA-FRONT 회원가입 페이지입니다.">
+    <meta name="theme-color" content="#4f46e5">
+    <title>회원가입 | SKALA-FRONT</title>
+    <link rel="stylesheet" href="../css/trendy.css">
+</head>
+
+<body>
+    <a class="skip-link" href="#main">본문 바로가기</a>
+
+    <div class="container">
+
+        <nav aria-label="이동 경로">
+            <ol class="breadcrumb">
+                <li><a href="index.html">홈</a></li>
+                <li aria-current="page">회원가입</li>
+            </ol>
+        </nav>
+
+        <header class="page-header">
+            <p class="kicker">STEP 01 OF 03</p>
+            <hgroup>
+                <h1>회원가입</h1>
+                <p>SKALA-FRONT 회원가입을 환영합니다.</p>
+            </hgroup>
+
+            <!--
+                단계 표시: 게이지 바 대신 번호형 스텝퍼.
+                data-state = done | current | todo → CSS에서 상태별 스타일 분기
+            -->
+            <nav class="stepper" aria-label="가입 진행 단계" data-component="stepper">
+                <ol>
+                    <li data-state="current" aria-current="step">
+                        <span class="stepper__index">01</span>
+                        <span class="stepper__label">정보 입력</span>
+                        <span class="stepper__state">진행 중</span>
+                    </li>
+                    <li data-state="todo">
+                        <span class="stepper__index">02</span>
+                        <span class="stepper__label">약관 동의</span>
+                        <span class="stepper__state">대기</span>
+                    </li>
+                    <li data-state="todo">
+                        <span class="stepper__index">03</span>
+                        <span class="stepper__label">가입 완료</span>
+                        <span class="stepper__state">대기</span>
+                    </li>
+                </ol>
+            </nav>
+        </header>
+
+        <main id="main">
+            <form action="signUpResult.html" method="get" class="signup-form" data-component="form">
+
+                <!-- ============ 계정 정보 ============ -->
+                <fieldset>
+                    <legend>계정 정보</legend>
+
+                    <p class="field">
+                        <label for="userId">아이디 <span class="req" aria-hidden="true">*</span></label>
+                        <input type="text" id="userId" name="userId"
+                            minlength="4" maxlength="15" required
+                            autocomplete="username"
+                            pattern="[A-Za-z0-9]{4,15}"
+                            placeholder="4~15자 영문/숫자"
+                            aria-describedby="userId-help">
+                        <small id="userId-help">필수 · 영문과 숫자만 사용할 수 있습니다.</small>
+                    </p>
+
+                    <p class="field">
+                        <label for="userPw">비밀번호 <span class="req" aria-hidden="true">*</span></label>
+                        <input type="password" id="userPw" name="userPw"
+                            minlength="8" required
+                            autocomplete="new-password"
+                            placeholder="8자 이상 입력"
+                            aria-describedby="userPw-help">
+                        <small id="userPw-help">필수 · 8자 이상, 영문·숫자·특수문자 조합을 권장합니다.</small>
+                    </p>
+
+                    <p class="field">
+                        <label for="userEmail">이메일</label>
+                        <input type="email" id="userEmail" name="userEmail"
+                            autocomplete="email"
+                            inputmode="email"
+                            list="email-suggestions"
+                            placeholder="example@gmail.com"
+                            aria-describedby="userEmail-help">
+                        <!-- datalist: 직접 입력하면서 추천도 받을 수 있는 자동완성 -->
+                        <datalist id="email-suggestions">
+                            <option value="@naver.com"></option>
+                            <option value="@gmail.com"></option>
+                            <option value="@daum.net"></option>
+                        </datalist>
+                        <small id="userEmail-help">가입 확인 메일을 받을 주소입니다.</small>
+                    </p>
+                </fieldset>
+
+                <!-- ============ 프로필 정보 ============ -->
+                <fieldset>
+                    <legend>개인 프로필 정보</legend>
+
+                    <p class="field">
+                        <label for="userName">이름 <span class="req" aria-hidden="true">*</span></label>
+                        <input type="text" id="userName" name="userName" required
+                            autocomplete="name" placeholder="홍길동">
+                    </p>
+
+                    <p class="field">
+                        <label for="userBirth">생년월일</label>
+                        <input type="date" id="userBirth" name="userBirth"
+                            min="1900-01-01" max="2026-12-31" autocomplete="bday">
+                    </p>
+
+                    <p class="field">
+                        <label for="userTel">휴대폰 번호</label>
+                        <input type="tel" id="userTel" name="userTel"
+                            autocomplete="tel" inputmode="tel"
+                            pattern="[0-9]{3}-[0-9]{3,4}-[0-9]{4}"
+                            placeholder="010-1234-5678"
+                            aria-describedby="userTel-help">
+                        <small id="userTel-help">선택 · 010-0000-0000 형식으로 입력해 주세요.</small>
+                    </p>
+
+                    <fieldset class="field-group">
+                        <legend>성별</legend>
+                        <label><input type="radio" name="gender" value="male" checked> 남성</label>
+                        <label><input type="radio" name="gender" value="female"> 여성</label>
+                        <label><input type="radio" name="gender" value="none"> 선택안함</label>
+                    </fieldset>
+
+                    <fieldset class="field-group">
+                        <legend>관심 분야 <small>(중복 선택 가능)</small></legend>
+                        <ul class="checkbox-list" data-component="chips-input">
+                            <li><label><input type="checkbox" name="interest" value="frontend"> 웹 프론트엔드 (Vue.js/HTML)</label></li>
+                            <li><label><input type="checkbox" name="interest" value="uiux"> UI/UX 디자인 표준</label></li>
+                            <li><label><input type="checkbox" name="interest" value="backend"> 백엔드 &amp; 데이터베이스</label></li>
+                            <li><label><input type="checkbox" name="interest" value="devops"> 클라우드 &amp; 인프라</label></li>
+                        </ul>
+                    </fieldset>
+
+                    <fieldset class="field-group">
+                        <legend>현재 개발 숙련도</legend>
+                        <!-- 슬라이더 대신 선택형: 상태가 눈에 바로 보이도록 -->
+                        <ul class="segmented" data-component="segmented-control">
+                            <li><label><input type="radio" name="skillLevel" value="1"> <span>입문</span></label></li>
+                            <li><label><input type="radio" name="skillLevel" value="2"> <span>초급</span></label></li>
+                            <li><label><input type="radio" name="skillLevel" value="3" checked> <span>보통</span></label></li>
+                            <li><label><input type="radio" name="skillLevel" value="4"> <span>중급</span></label></li>
+                            <li><label><input type="radio" name="skillLevel" value="5"> <span>숙련</span></label></li>
+                        </ul>
+                    </fieldset>
+
+                    <p class="field">
+                        <label for="joinPath">가입 경로</label>
+                        <select id="joinPath" name="joinPath">
+                            <option value="" disabled selected>-- 선택해 주세요 --</option>
+                            <optgroup label="온라인">
+                                <option value="search">인터넷 검색</option>
+                                <option value="sns">SNS 광고</option>
+                            </optgroup>
+                            <optgroup label="오프라인">
+                                <option value="friend">지인 추천</option>
+                                <option value="etc">기타</option>
+                            </optgroup>
+                        </select>
+                    </p>
+                </fieldset>
+
+                <!-- ============ 자기소개 ============ -->
+                <fieldset>
+                    <legend>자기소개</legend>
+                    <p class="field">
+                        <label for="intro">나를 표현하는 한 줄 소개 또는 가입 인사</label>
+                        <textarea id="intro" name="intro" rows="5" maxlength="200"
+                            placeholder="여기에 내용을 입력하세요 (최대 200자)"
+                            aria-describedby="intro-help"></textarea>
+                        <small id="intro-help">최대 200자까지 입력할 수 있습니다.</small>
+                    </p>
+                </fieldset>
+
+                <!-- ============ 약관 동의 ============ -->
+                <fieldset>
+                    <legend>약관 동의</legend>
+                    <p class="field">
+                        <label>
+                            <input type="checkbox" name="agree" value="yes" required>
+                            <strong>[필수]</strong> 이용약관 및 개인정보 처리방침에 동의합니다.
+                        </label>
+                        <button type="button" popovertarget="terms-pop" class="btn-ghost">약관 보기</button>
+                    </p>
+
+                    <!-- 팝오버로 약관 미리보기 (JS 없이 동작) -->
+                    <div id="terms-pop" popover class="popover-card">
+                        <h2>이용약관 요약</h2>
+                        <ol>
+                            <li>입력한 정보는 학습용 예제로만 사용됩니다.</li>
+                            <li>언제든지 마이페이지에서 정보를 수정할 수 있습니다.</li>
+                            <li>탈퇴 시 모든 정보는 즉시 삭제됩니다.</li>
+                        </ol>
+                        <button type="button" popovertarget="terms-pop" popovertargetaction="hide">닫기</button>
+                    </div>
+                </fieldset>
+
+                <p class="form-actions">
+                    <button type="submit" class="btn-submit">동의하고 회원가입</button>
+                    <button type="reset" class="btn-reset">다시 작성</button>
+                </p>
+
+            </form>
+        </main>
+
+        <footer class="site-footer">
+            <p>이미 계정이 있으신가요? <a href="index.html">홈으로 돌아가기</a></p>
+            <p><small>&copy; <time datetime="2026">2026</time> SKALA-FRONT 프로젝트</small></p>
+        </footer>
+
+    </div>
+</body>
+
+</html>

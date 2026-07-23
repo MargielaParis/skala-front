@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="월요일부터 금요일까지의 주간 강의 시간표입니다.">
+    <meta name="theme-color" content="#4f46e5">
+    <title>나의 강의 시간표 | 박기연의 유니버스</title>
+    <link rel="stylesheet" href="../css/trendy.css">
+</head>
+
+<body>
+    <a class="skip-link" href="#main">본문 바로가기</a>
+
+    <div class="container">
+
+        <nav aria-label="이동 경로">
+            <ol class="breadcrumb">
+                <li><a href="index.html">홈</a></li>
+                <li aria-current="page">수업 시간표</li>
+            </ol>
+        </nav>
+
+        <header class="page-header">
+            <p class="kicker">TIMETABLE</p>
+            <hgroup>
+                <h1>나의 강의 시간표</h1>
+                <p><time datetime="2026-W30">2026년 30주차</time> 기준 주간 스케줄</p>
+            </hgroup>
+            <p>
+                <span class="badge" data-tone="info">주 5일</span>
+                <span class="badge" data-tone="info">총 18과목</span>
+                <button type="button" popovertarget="legend-pop" class="btn-ghost">표 보는 법</button>
+            </p>
+
+            <div id="legend-pop" popover class="popover-card">
+                <h2>표 보는 법</h2>
+                <ul>
+                    <li>세로로 병합된 칸은 연강(연속 수업)입니다.</li>
+                    <li>점심시간은 가로로 병합되어 있습니다.</li>
+                </ul>
+                <button type="button" popovertarget="legend-pop" popovertargetaction="hide">닫기</button>
+            </div>
+        </header>
+
+        <main id="main">
+
+            <!-- 좁은 화면에서 가로 스크롤 되도록 감싸는 래퍼 (CSS는 추후 적용) -->
+            <div class="table-scroll" role="region" aria-labelledby="timetable-caption" tabindex="0">
+                <table class="timetable" data-component="timetable">
+                    <caption id="timetable-caption">
+                        주간 강의 시간표
+                        <small>가로 · 요일 / 세로 · 교시</small>
+                    </caption>
+
+                    <colgroup>
+                        <col class="col-time">
+                        <col span="5" class="col-day">
+                    </colgroup>
+
+                    <thead>
+                        <tr>
+                            <th scope="col">시간</th>
+                            <th scope="col">월</th>
+                            <th scope="col">화</th>
+                            <th scope="col">수</th>
+                            <th scope="col">목</th>
+                            <th scope="col">금</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <th scope="row"><time datetime="09:00">09:00</time>–<time datetime="10:00">10:00</time></th>
+                            <td rowspan="3">HTML · CSS<br><small>웹 표준 마크업</small></td>
+                            <td rowspan="2">자바스크립트<br><small>ES6+ 문법</small></td>
+                            <td rowspan="3">Vue.js<br><small>컴포넌트 설계</small></td>
+                            <td>AI 활용 특강</td>
+                            <td rowspan="3">Java · Spring<br><small>백엔드 연동</small></td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><time datetime="10:00">10:00</time>–<time datetime="11:00">11:00</time></th>
+                            <td rowspan="2">데이터베이스<br><small>SQL 실습</small></td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><time datetime="11:00">11:00</time>–<time datetime="12:00">12:00</time></th>
+                            <td>알고리즘 문제풀이</td>
+                        </tr>
+
+                        <tr class="row-break" data-type="lunch">
+                            <th scope="row"><time datetime="12:00">12:00</time>–<time datetime="13:00">13:00</time></th>
+                            <td colspan="5">점심시간</td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row"><time datetime="13:00">13:00</time>–<time datetime="14:00">14:00</time></th>
+                            <td rowspan="4">UI/UX<br><small>디자인 시스템</small></td>
+                            <td rowspan="2">Docker<br><small>컨테이너 실습</small></td>
+                            <td rowspan="2">클라우드<br><small>AWS 기초</small></td>
+                            <td rowspan="3">자료구조 · 알고리즘</td>
+                            <td>개인 프로젝트</td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><time datetime="14:00">14:00</time>–<time datetime="15:00">15:00</time></th>
+                            <td rowspan="3">팀 프로젝트<br><small>SKALA 미니 프로젝트</small></td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><time datetime="15:00">15:00</time>–<time datetime="16:00">16:00</time></th>
+                            <td rowspan="3">Git &amp; GitHub<br><small>협업 워크플로</small></td>
+                            <td rowspan="3">REST API<br><small>서버 연동 실습</small></td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><time datetime="16:00">16:00</time>–<time datetime="17:00">17:00</time></th>
+                            <td rowspan="2">웹 접근성<br><small>표준 점검</small></td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><time datetime="17:00">17:00</time>–<time datetime="18:00">18:00</time></th>
+                            <td>커리어 특강</td>
+                            <td>주간 회고</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <section aria-labelledby="tip-title">
+                <p class="kicker">NOTE</p>
+                <h2 id="tip-title">이번 주 메모</h2>
+                <details name="class-note" class="accordion" open>
+                    <summary>과제 마감일</summary>
+                    <ul>
+                        <li><time datetime="2026-07-24">07. 24.</time> — Vue.js 컴포넌트 실습 제출</li>
+                        <li><time datetime="2026-07-27">07. 27.</time> — 팀 프로젝트 중간 발표 <mark>중요</mark></li>
+                    </ul>
+                </details>
+                <details name="class-note" class="accordion">
+                    <summary>준비물</summary>
+                    <ul>
+                        <li>노트북 + 충전기 <kbd>필수</kbd></li>
+                        <li>Docker Desktop 설치 확인</li>
+                    </ul>
+                </details>
+            </section>
+
+        </main>
+
+        <footer class="site-footer">
+            <p><a href="index.html">&larr; 홈으로 돌아가기</a></p>
+            <p><small>&copy; <time datetime="2026">2026</time> 기연 포트폴리오</small></p>
+        </footer>
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="느긋한 아침부터 밤까지, 완벽한 휴일 하루의 타임라인입니다.">
+    <meta name="theme-color" content="#4f46e5">
+    <title>나의 휴일 일과 | 박기연의 유니버스</title>
+    <link rel="stylesheet" href="../css/trendy.css">
+</head>
+
+<body>
+    <a class="skip-link" href="#main">본문 바로가기</a>
+
+    <div class="container">
+
+        <nav aria-label="이동 경로">
+            <ol class="breadcrumb">
+                <li><a href="index.html">홈</a></li>
+                <li aria-current="page">휴일 계획</li>
+            </ol>
+        </nav>
+
+        <header class="page-header">
+            <p class="kicker">DAY OFF</p>
+            <hgroup>
+                <h1>나의 휴일 일과</h1>
+                <p>아침 <time datetime="09:00">9시</time>부터 밤 <time datetime="23:00">11시</time>까지, 하루를 알차게 쓰는 법</p>
+            </hgroup>
+            <p>
+                <span class="badge" data-tone="info">총 9개 일정</span>
+                <span class="badge" data-tone="new">2026년 5월 버전</span>
+            </p>
+        </header>
+
+        <main id="main">
+
+            <!-- ============ 아침 ============ -->
+            <section class="timeline-section" aria-labelledby="morning-title" data-part="morning">
+                <p class="kicker">MORNING</p>
+                <h2 id="morning-title">느긋한 아침</h2>
+                <ol class="timeline" data-component="timeline">
+                    <li class="timeline__item">
+                        <time datetime="09:00">09:00</time>
+                        <p>늦잠 자는 행복</p>
+                    </li>
+                    <li class="timeline__item">
+                        <time datetime="10:00">10:00</time>
+                        <p>여유 있게 <mark>브런치</mark> 즐기기</p>
+                    </li>
+                    <li class="timeline__item">
+                        <time datetime="11:00">11:00</time>
+                        <p><strong>커피 한 잔</strong>과 음악 감상</p>
+                    </li>
+                </ol>
+            </section>
+
+            <!-- ============ 오후 ============ -->
+            <section class="timeline-section" aria-labelledby="afternoon-title" data-part="afternoon">
+                <p class="kicker">AFTERNOON</p>
+                <h2 id="afternoon-title">오후 활동</h2>
+                <ol class="timeline" data-component="timeline">
+                    <li class="timeline__item">
+                        <time datetime="13:00">13:00</time>
+                        <p>공원 산책하며 <strong>마음 정리</strong></p>
+                    </li>
+                    <li class="timeline__item">
+                        <time datetime="14:30">14:30</time>
+                        <p>사진 찍으며 <strong>일상의 순간 기록</strong></p>
+                    </li>
+                    <li class="timeline__item">
+                        <time datetime="16:00">16:00</time>
+                        <p>충동구매 대신 <mark>창의적인 쇼핑</mark></p>
+                    </li>
+                </ol>
+            </section>
+
+            <!-- ============ 저녁과 밤 ============ -->
+            <section class="timeline-section" aria-labelledby="evening-title" data-part="evening">
+                <p class="kicker">EVENING</p>
+                <h2 id="evening-title">저녁과 밤</h2>
+                <ol class="timeline" data-component="timeline">
+                    <li class="timeline__item">
+                        <time datetime="18:00">18:00</time>
+                        <p><strong>맛있는 저녁</strong> 만들기</p>
+                    </li>
+                    <li class="timeline__item">
+                        <time datetime="20:00">20:00</time>
+                        <p>영화 감상 <small>(코미디 추천)</small></p>
+                    </li>
+                    <li class="timeline__item">
+                        <time datetime="23:00">23:00</time>
+                        <p>짧은 독서 후 힐링 타임</p>
+                    </li>
+                </ol>
+            </section>
+
+            <!-- ============ 부가 정보 ============ -->
+            <section aria-labelledby="extra-title">
+                <p class="kicker">EXTRA</p>
+                <h2 id="extra-title">이런 것도 챙겨요</h2>
+                <details name="holiday-extra" class="accordion">
+                    <summary>휴일 준비물 체크리스트</summary>
+                    <ul class="checklist">
+                        <li>카메라 배터리 충전</li>
+                        <li>산책용 플레이리스트</li>
+                        <li>읽던 책 한 권</li>
+                    </ul>
+                </details>
+                <details name="holiday-extra" class="accordion">
+                    <summary>다른 버전의 휴일도 있어요</summary>
+                    <p><a href="myHoliday2.html">7월 버전 휴일 일과 보기 &rarr;</a></p>
+                </details>
+            </section>
+
+        </main>
+
+        <footer class="site-footer">
+            <p>휴일 버전 작성일 · <time datetime="2026-05">2026년 5월</time></p>
+            <p><a href="index.html">&larr; 홈으로 돌아가기</a></p>
+            <p><small>&copy; <time datetime="2026">2026</time> 기연 포트폴리오</small></p>
+        </footer>
+
+    </div>
+</body>
+
+</html>

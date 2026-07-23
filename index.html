@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="박기연의 프로필, 학습 기록, 여행 앨범을 모아둔 개인 포털 허브 페이지입니다.">
+    <meta name="theme-color" content="#4f46e5">
+    <meta name="color-scheme" content="light dark">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="박기연의 유니버스">
+    <meta property="og:description" content="프로필 · 학습 · 여행을 한곳에 모은 개인 포털">
+    <meta property="og:image" content="../media/리장.jpg">
+    <title>박기연의 유니버스 | 개인 포털</title>
+    <link rel="stylesheet" href="../css/trendy.css">
+</head>
+
+<body>
+    <!-- 키보드 사용자를 위한 건너뛰기 링크 -->
+    <a class="skip-link" href="#main">본문 바로가기</a>
+
+    <div class="container">
+
+        <!-- ============ HERO ============ -->
+        <header class="site-header" data-component="hero">
+            <p class="kicker">PERSONAL PORTAL</p>
+            <hgroup>
+                <h1>박기연의 유니버스</h1>
+                <p class="site-header__tagline">프로필 · 학습 · 여행 기록을 한곳에 모은 Hub 페이지</p>
+            </hgroup>
+
+            <p class="site-header__meta">
+                <span class="badge" data-tone="new">NEW</span>
+                마지막 업데이트 <time datetime="2026-07-23">2026. 07. 23.</time>
+                <button type="button" popovertarget="hero-info" class="btn-ghost">안내</button>
+            </p>
+
+            <!-- 팝오버: JS 없이 동작하는 네이티브 안내창 -->
+            <div id="hero-info" popover class="popover-card">
+                <h2>이 페이지는?</h2>
+                <p>HTML 시맨틱 태그와 네이티브 컴포넌트만으로 만든 개인 포털입니다.</p>
+                <button type="button" popovertarget="hero-info" popovertargetaction="hide">닫기</button>
+            </div>
+        </header>
+
+        <!-- ============ NAV ============ -->
+        <nav aria-label="주요 페이지 바로가기">
+            <p class="kicker">MENU</p>
+            <h2>바로가기</h2>
+            <ul class="nav-grid" data-component="card-nav">
+                <li>
+                    <a href="myProfile.html">
+                        <span class="nav-grid__index">01</span>
+                        <strong>소개</strong>
+                        <small>좋아하는 것 · 올해 목표 · 키워드</small>
+                    </a>
+                </li>
+                <li>
+                    <a href="myClass.html">
+                        <span class="nav-grid__index">02</span>
+                        <strong>수업 시간표</strong>
+                        <small>주간 강의 스케줄 한눈에 보기</small>
+                    </a>
+                </li>
+                <li>
+                    <a href="myHoliday.html">
+                        <span class="nav-grid__index">03</span>
+                        <strong>휴일 계획</strong>
+                        <small>아침부터 밤까지의 완벽한 하루</small>
+                    </a>
+                </li>
+                <li>
+                    <a href="myTrip.html">
+                        <span class="nav-grid__index">04</span>
+                        <strong>여행 앨범</strong>
+                        <small>사진 · 브이로그 · 배경 음악</small>
+                    </a>
+                </li>
+                <li>
+                    <a href="signUp.html">
+                        <span class="nav-grid__index">05</span>
+                        <strong>회원가입</strong>
+                        <small>SKALA-FRONT 멤버 되기</small>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- ============ 통계 스트립 ============ -->
+        <section aria-labelledby="stats-title" data-component="stat-strip">
+            <p class="kicker">2026 OVERVIEW</p>
+            <h2 id="stats-title">올해 한눈에 보기</h2>
+
+            <dl class="stat-list">
+                <div class="stat">
+                    <dt id="stat-goal">올해 목표 달성률</dt>
+                    <dd>
+                        <span class="stat__value">62<small class="stat__unit">%</small></span>
+                        <!-- 커스텀 프로그레스 바: 채움은 .bar__fill을 CSS로 그립니다 (data-value 참고) -->
+                        <span class="bar" role="progressbar" aria-labelledby="stat-goal"
+                            aria-valuemin="0" aria-valuemax="100" aria-valuenow="62" data-value="62">
+                            <span class="bar__fill"></span>
+                        </span>
+                    </dd>
+                </div>
+
+                <div class="stat">
+                    <dt id="stat-book">읽은 책</dt>
+                    <dd>
+                        <span class="stat__value">29<small class="stat__unit">/ 52권</small></span>
+                        <span class="bar" role="progressbar" aria-labelledby="stat-book"
+                            aria-valuemin="0" aria-valuemax="52" aria-valuenow="29" data-value="56">
+                            <span class="bar__fill"></span>
+                        </span>
+                    </dd>
+                </div>
+
+                <div class="stat">
+                    <dt id="stat-trip">다녀온 여행지</dt>
+                    <dd>
+                        <span class="stat__value">3<small class="stat__unit">곳</small></span>
+                        <span class="stat__caption">중국 · 필리핀 · 일본</span>
+                    </dd>
+                </div>
+            </dl>
+        </section>
+
+        <div class="content-wrapper">
+
+            <!-- ============ MAIN ============ -->
+            <main id="main">
+                <p class="kicker">TODAY</p>
+                <h2>오늘의 주요 소식</h2>
+
+                <section aria-labelledby="notice-title">
+                    <h3 id="notice-title">최근 공지 및 업데이트</h3>
+
+                    <article class="card" data-component="notice">
+                        <header>
+                            <p class="card__meta">
+                                <span class="badge" data-tone="update">UPDATE</span>
+                                <time datetime="2026-06-11">2026. 06. 11.</time>
+                            </p>
+                            <h4>여행 앨범에 동영상 추가 완료</h4>
+                        </header>
+                        <p>여행 앨범 아래쪽에 직접 찍은 브이로그 영상을 올렸습니다. 이제 사진과 배경 음악, 영상까지 한 페이지에서 볼 수 있습니다.</p>
+                        <footer>
+                            <a href="myTrip.html">앨범에서 확인하기 &rarr;</a>
+                        </footer>
+                    </article>
+
+                    <!-- 아코디언: details/summary 만으로 구현 -->
+                    <details name="notice-archive" class="accordion">
+                        <summary>지난 소식 더 보기</summary>
+                        <ul>
+                            <li><time datetime="2026-05-02">05. 02.</time> — 휴일 계획 페이지 개편</li>
+                            <li><time datetime="2026-04-18">04. 18.</time> — 회원가입 폼 유효성 검사 추가</li>
+                            <li><time datetime="2026-03-30">03. 30.</time> — 전체 페이지 시맨틱 마크업으로 재작성</li>
+                        </ul>
+                    </details>
+                    <details name="notice-archive" class="accordion">
+                        <summary>자주 묻는 질문</summary>
+                        <dl>
+                            <dt>이 사이트는 무엇으로 만들었나요?</dt>
+                            <dd>순수 <abbr title="HyperText Markup Language">HTML</abbr>과 약간의 자바스크립트로 만들었습니다.</dd>
+                            <dt>소스는 공개되어 있나요?</dt>
+                            <dd>네, 학습용으로 자유롭게 참고하셔도 됩니다.</dd>
+                        </dl>
+                    </details>
+                </section>
+
+                <section aria-labelledby="best-cut-title">
+                    <h3 id="best-cut-title">이달의 베스트 컷</h3>
+                    <figure class="media-card">
+                        <img src="../media/리장.jpg" width="400" height="200"
+                            alt="깎아지른 절벽 사이로 강이 흐르는 중국 리장 호도협의 풍경"
+                            loading="lazy" decoding="async">
+                        <figcaption>
+                            <strong>리장 호도협</strong>
+                            <small>중국 · <time datetime="2025">2025</time></small>
+                        </figcaption>
+                    </figure>
+                </section>
+            </main>
+
+            <!-- ============ ASIDE ============ -->
+            <aside aria-label="실시간 정보와 미니 게임">
+                <p class="kicker">LIVE</p>
+                <h2>실시간 정보</h2>
+                <p>도시를 고르면 현재 기온과 습도를 불러옵니다.</p>
+
+                <section aria-labelledby="weather-title">
+                    <h3 id="weather-title">실시간 세계 날씨</h3>
+                    <label for="city-select">도시 선택</label>
+                    <select id="city-select" name="city">
+                        <option value="none">도시를 선택하세요</option>
+                        <option value="37.56,126.97">대한민국 서울</option>
+                        <option value="35.67,139.65">일본 도쿄</option>
+                        <option value="48.85,2.35">프랑스 파리</option>
+                    </select>
+                    <!-- 스크립트가 채워 넣는 영역: 변경 사항을 스크린리더에 알림 -->
+                    <div id="weather-box" role="status" aria-live="polite">
+                        <p>도시를 선택하면 좌표가 표시됩니다.</p>
+                    </div>
+                </section>
+
+                <section class="game-area" aria-labelledby="game-title">
+                    <h3 id="game-title">자바스크립트 놀이터</h3>
+                    <ul class="game-list">
+                        <li><button type="button" class="btn-submit" onclick="startGame()">업다운 게임</button></li>
+                        <li><button type="button" class="btn-submit" onclick="checkGrade()">성적 계산기</button></li>
+                        <li><button type="button" class="btn-submit" onclick="showMyBag()">내 가방 보기</button></li>
+                    </ul>
+                </section>
+            </aside>
+
+        </div>
+
+        <!-- ============ FOOTER ============ -->
+        <footer class="site-footer">
+            <nav aria-label="바닥글 링크">
+                <ul>
+                    <li><a href="myProfile.html">소개</a></li>
+                    <li><a href="myTrip.html">여행</a></li>
+                    <li><a href="https://www.w3schools.com" target="_blank" rel="noopener noreferrer">W3Schools &nearr;</a></li>
+                </ul>
+            </nav>
+            <address>
+                이메일 문의 · <a href="mailto:kiyeon9610@gmail.com">kiyeon9610@gmail.com</a>
+            </address>
+            <p><small>&copy; <time datetime="2026">2026</time> 기연 포트폴리오. 모든 마크업은 웹 표준 시맨틱 태그로 작성되었습니다.</small></p>
+        </footer>
+
+    </div>
+
+    <script src="../script/upDown.js"></script>
+    <script src="../script/grade.js"></script>
+    <script src="../script/bag.js"></script>
+    <script type="module" src="../script/realtimeInfo.js"></script>
+</body>
+
+</html>
