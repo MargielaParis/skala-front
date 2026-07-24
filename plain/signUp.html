@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SKALA-FRONT 회원가입 폼 (CSS 없는 순수 마크업 버전)">
+    <title>회원가입 | 박기연의 유니버스</title>
+</head>
+
+<body>
+    <!-- 과제 6: 필수 element = form, fieldset, legend, label, input, select, option, textarea, submit, reset
+         form action="signUpResult.html", method="get" -->
+
+    <header>
+        <nav aria-label="이동 경로">
+            <a href="index.html">홈</a> &gt; <strong>회원가입</strong>
+        </nav>
+        <h1>회원가입</h1>
+        <p>SKALA-FRONT 멤버가 되어 보세요. <span title="필수 항목">*</span> 표시는 필수 입력입니다.</p>
+    </header>
+
+    <main>
+        <form action="signUpResult.html" method="get">
+
+            <!-- 계정 정보 -->
+            <fieldset>
+                <legend>계정 정보</legend>
+
+                <p>
+                    <label for="userId">아이디 *</label><br>
+                    <input type="text" id="userId" name="userId" required
+                        minlength="4" maxlength="15" placeholder="4~15자 영문/숫자" autocomplete="username">
+                </p>
+
+                <p>
+                    <label for="pw">비밀번호 *</label><br>
+                    <input type="password" id="pw" name="pw" required
+                        minlength="8" placeholder="8자 이상 입력" autocomplete="new-password">
+                </p>
+
+                <p>
+                    <label for="email">이메일</label><br>
+                    <input type="text" id="email" name="email" placeholder="example" autocomplete="email"> @
+                    <label for="domain">도메인</label>
+                    <select id="domain" name="domain">
+                        <option value="">직접 입력</option>
+                        <option value="gmail.com">gmail.com</option>
+                        <option value="naver.com">naver.com</option>
+                        <option value="daum.net">daum.net</option>
+                    </select>
+                </p>
+            </fieldset>
+
+            <!-- 개인 프로필 정보 -->
+            <fieldset>
+                <legend>개인 프로필 정보</legend>
+
+                <p>
+                    <label for="userName">이름 *</label><br>
+                    <input type="text" id="userName" name="userName" required
+                        placeholder="홍길동" autocomplete="name">
+                </p>
+
+                <p>
+                    <label for="userBirth">생년월일</label><br>
+                    <input type="date" id="userBirth" name="userBirth"
+                        min="1900-01-01" max="2026-12-31" autocomplete="bday">
+                </p>
+
+                <p>
+                    <label for="userTel">휴대폰 번호</label><br>
+                    <input type="tel" id="userTel" name="userTel"
+                        pattern="[0-9]{3}-[0-9]{3,4}-[0-9]{4}"
+                        placeholder="010-1234-5678" autocomplete="tel">
+                </p>
+
+                <fieldset>
+                    <legend>성별</legend>
+                    <label><input type="radio" name="gender" value="male" checked> 남성</label>
+                    <label><input type="radio" name="gender" value="female"> 여성</label>
+                    <label><input type="radio" name="gender" value="none"> 선택안함</label>
+                </fieldset>
+
+                <fieldset>
+                    <legend>관심 분야 (중복 선택 가능)</legend>
+                    <label><input type="checkbox" name="interest" value="vision"> Vision</label><br>
+                    <label><input type="checkbox" name="interest" value="llm"> LLM</label><br>
+                    <label><input type="checkbox" name="interest" value="model-compression"> Model Compression</label><br>
+                    <label><input type="checkbox" name="interest" value="retrieval-model"> Retrieval Model</label>
+                </fieldset>
+
+                <p>
+                    <label for="joinPath">가입 경로</label><br>
+                    <select id="joinPath" name="joinPath">
+                        <option value="" disabled selected>-- 선택해 주세요 --</option>
+                        <optgroup label="온라인">
+                            <option value="search">인터넷 검색</option>
+                            <option value="sns">SNS 광고</option>
+                        </optgroup>
+                        <optgroup label="오프라인">
+                            <option value="friend">지인 추천</option>
+                            <option value="etc">기타</option>
+                        </optgroup>
+                    </select>
+                </p>
+            </fieldset>
+
+            <!-- 자기소개 -->
+            <fieldset>
+                <legend>자기소개</legend>
+                <p>
+                    <label for="intro">나를 표현하는 한 줄 소개 또는 가입 인사</label><br>
+                    <textarea id="intro" name="intro" rows="5" cols="40" maxlength="200"
+                        placeholder="여기에 내용을 입력하세요 (최대 200자)"></textarea>
+                </p>
+            </fieldset>
+
+            <!-- 약관 동의 (추가 실습) -->
+            <fieldset>
+                <legend>약관 동의</legend>
+                <label>
+                    <input type="checkbox" name="agree" value="yes" required>
+                    <strong>[필수]</strong> 이용약관 및 개인정보 처리방침에 동의합니다.
+                </label>
+            </fieldset>
+
+            <p>
+                <input type="submit" value="동의하고 회원가입">
+                <input type="reset" value="다시 작성">
+            </p>
+        </form>
+    </main>
+
+    <footer>
+        <p><a href="index.html">&larr; 홈으로 돌아가기</a></p>
+        <p><small>&copy; <time datetime="2026">2026</time> SKALA-FRONT</small></p>
+    </footer>
+</body>
+
+</html>

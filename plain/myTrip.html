@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="사진과 브이로그를 채워 나갈 여행 앨범 (CSS 없는 순수 마크업 버전)">
+    <title>나의 여행 앨범 | 박기연</title>
+</head>
+
+<body>
+    <!-- 과제 8: 필수 element = audio+source, img, video+source
+         미디어는 media/ 폴더에 두므로 상대 경로는 ../../media/... 가 됩니다.
+         현재 개인 여행 미디어가 없어 자리표시(준비 중) 상태로 둡니다. -->
+
+    <header>
+        <nav aria-label="이동 경로">
+            <a href="index.html">홈</a> &gt; <strong>여행 앨범</strong>
+        </nav>
+        <h1>나의 여행 앨범</h1>
+        <p>사진과 브이로그, 배경 음악을 앞으로 채워 나갈 공간입니다.</p>
+    </header>
+
+    <main>
+        <!-- 배경 음악: audio + source -->
+        <section>
+            <h2>앨범 배경 음악</h2>
+            <p><small>배경 음악은 아직 준비 중입니다.</small></p>
+            <audio controls>
+                <source src="" type="audio/mpeg">
+                이 브라우저는 오디오 재생을 지원하지 않습니다.
+            </audio>
+        </section>
+
+        <!-- 사진 갤러리: img -->
+        <section>
+            <h2>사진 갤러리</h2>
+            <figure>
+                <img src="" width="400" height="200" alt="여행 사진 준비 중">
+                <figcaption>사진 준비 중 — 여행을 다녀오면 채울 예정입니다.</figcaption>
+            </figure>
+        </section>
+
+        <!-- 브이로그: video + source -->
+        <section>
+            <h2>여행 브이로그</h2>
+            <figure>
+                <video width="400" height="225" controls>
+                    <source src="" type="video/mp4">
+                    이 브라우저는 비디오 재생을 지원하지 않습니다.
+                </video>
+                <figcaption>브이로그 영상은 준비 중입니다.</figcaption>
+            </figure>
+        </section>
+    </main>
+
+    <footer>
+        <p><a href="index.html">&larr; 홈으로 돌아가기</a></p>
+        <p><small>&copy; <time datetime="2026">2026</time> 박기연</small></p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="박기연의 소개 - 좋아하는 음식, 올해 할 일, 나를 설명하는 단어들 (CSS 없는 순수 마크업 버전)">
+    <title>나의 소개 | 박기연</title>
+</head>
+
+<body>
+    <!-- 과제 3: 필수 element = ul, ol, dl (CSS 사용 금지) -->
+
+    <header>
+        <nav aria-label="이동 경로">
+            <a href="index.html">홈</a> &gt; <strong>나의 소개</strong>
+        </nav>
+        <h1>안녕하세요, 박기연입니다</h1>
+        <p>좋아하는 것들과 올해의 계획, 그리고 저를 설명하는 단어들입니다.</p>
+    </header>
+
+    <main>
+        <!-- 좋아하는 음식: 순서 없는 목록 -->
+        <section>
+            <h2>내가 좋아하는 음식</h2>
+            <ul>
+                <li><strong>아이스 아메리카노</strong> — 안 마시면 이제는 졸려서 안 됩니다.</li>
+                <li><strong>고기</strong> — 고기는 그냥 옳습니다.</li>
+                <li><strong>초코</strong> — 특히 진한 초콜릿의 씁쓸하고 달달한 맛을 좋아합니다.</li>
+            </ul>
+        </section>
+
+        <!-- 올해 할 일: 순서 있는 목록 + 진행률(추가 실습: 네이티브 progress) -->
+        <section>
+            <h2>올해 할 일</h2>
+            <ol>
+                <li>
+                    헬스장 끊어서 다녀보기
+                    <br>
+                    <label>진행률
+                        <progress value="0" max="100">0%</progress>
+                    </label>
+                    <mark>0%</mark>
+                </li>
+                <li>
+                    취미 생활 꾸준히 하기
+                    <br>
+                    <label>진행률
+                        <progress value="50" max="100">50%</progress>
+                    </label>
+                    <mark>50%</mark>
+                </li>
+                <li>
+                    도메인 분야 최신 기술 동향 꾸준히 팔로우하기
+                    <br>
+                    <label>진행률
+                        <progress value="30" max="100">30%</progress>
+                    </label>
+                    <mark>30%</mark>
+                </li>
+            </ol>
+            <p><small>세 목표 평균 진행률은 <mark>27%</mark>입니다.</small></p>
+        </section>
+
+        <!-- 나를 설명하는 단어: 정의 목록 -->
+        <section>
+            <h2>나를 설명하는 단어들</h2>
+            <dl>
+                <dt>호기심</dt>
+                <dd>궁금하고 하고 싶은 건 해봐야 직성이 풀립니다.</dd>
+                <dt>열정</dt>
+                <dd>무언가에 한번 빠지면 엄청 몰두합니다.</dd>
+                <dt>활동적</dt>
+                <dd>활동적인 것, 특히 스포츠를 좋아합니다.</dd>
+            </dl>
+        </section>
+
+        <!-- 추가 실습: details/summary 로 더보기 -->
+        <section>
+            <h2>조금 더 자세한 이야기</h2>
+            <details>
+                <summary>나를 움직이는 방식</summary>
+                <blockquote>
+                    <p>궁금한 건 일단 해보고, 한번 빠지면 끝까지 파고드는 편입니다.</p>
+                </blockquote>
+            </details>
+        </section>
+    </main>
+
+    <footer>
+        <p><a href="index.html">&larr; 홈으로 돌아가기</a></p>
+        <address>문의: <a href="mailto:kiyeon9610@gmail.com">kiyeon9610@gmail.com</a></address>
+        <p><small>&copy; <time datetime="2026">2026</time> 박기연</small></p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="박기연의 주간 강의 시간표 (CSS 없는 순수 마크업 버전)">
+    <title>나의 강의 시간표 | 박기연</title>
+</head>
+
+<body>
+    <!-- 과제 4: 필수 element = table, thead, tbody, td 병합 (CSS 사용 금지)
+         border 속성은 CSS가 아닌 HTML 속성이라 사용합니다. -->
+
+    <header>
+        <nav aria-label="이동 경로">
+            <a href="index.html">홈</a> &gt; <strong>수업 시간표</strong>
+        </nav>
+        <h1>나의 강의 시간표</h1>
+        <p>SKALA 후반기 주간 스케줄입니다. 하루 종일 같은 과목이라 세로로, 여러 요일에 걸친 과목은 가로로 셀을 병합했습니다.</p>
+    </header>
+
+    <main>
+        <table border="1">
+            <caption>주간 강의 시간표 (가로 · 요일 / 세로 · 교시)</caption>
+
+            <colgroup>
+                <col>
+                <col span="5">
+            </colgroup>
+
+            <thead>
+                <tr>
+                    <th scope="col">시간</th>
+                    <th scope="col">월</th>
+                    <th scope="col">화</th>
+                    <th scope="col">수</th>
+                    <th scope="col">목</th>
+                    <th scope="col">금</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <!-- 오전 09:00~12:30: 하루 종일 같은 과목 → rowspan 4,
+                     화·수 / 목·금은 같은 과목 → colspan 2 -->
+                <tr>
+                    <th scope="row">09:00 - 10:00</th>
+                    <td rowspan="4">데이터 분석 개요 및 기초 통계</td>
+                    <td rowspan="4" colspan="2">LLM과 Transformer 아키텍처</td>
+                    <td rowspan="4" colspan="2">HTML · CSS · JavaScript</td>
+                </tr>
+                <tr>
+                    <th scope="row">10:00 - 11:00</th>
+                </tr>
+                <tr>
+                    <th scope="row">11:00 - 12:00</th>
+                </tr>
+                <tr>
+                    <th scope="row">12:00 - 12:30</th>
+                </tr>
+
+                <!-- 점심시간: 요일 전체 병합 → colspan 5 -->
+                <tr>
+                    <th scope="row">12:30 - 13:30</th>
+                    <td colspan="5">점심시간</td>
+                </tr>
+
+                <!-- 오후 13:30~17:50 -->
+                <tr>
+                    <th scope="row">13:30 - 14:30</th>
+                    <td rowspan="4">데이터 분석 개요 및 기초 통계</td>
+                    <td rowspan="4" colspan="2">LLM과 Transformer 아키텍처</td>
+                    <td rowspan="4" colspan="2">HTML · CSS · JavaScript</td>
+                </tr>
+                <tr>
+                    <th scope="row">14:30 - 15:30</th>
+                </tr>
+                <tr>
+                    <th scope="row">15:30 - 16:30</th>
+                </tr>
+                <tr>
+                    <th scope="row">16:30 - 17:50</th>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- 추가 실습: 과제 마감일 정리 -->
+        <section>
+            <h2>과제 마감일</h2>
+            <ul>
+                <li><time datetime="2026-07-24">07. 24.</time> — HTML · CSS · JavaScript 과제 GitHub 등록</li>
+                <li><time datetime="2026-07-26">07. 26.</time> — Transformer &amp; LLM 실습 보고서 <mark>중요</mark></li>
+                <li><time datetime="2026-07-26">07. 26.</time> — HTML · CSS · JavaScript 과제 제출 <mark>중요</mark></li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p><a href="index.html">&larr; 홈으로 돌아가기</a></p>
+        <p><small>&copy; <time datetime="2026">2026</time> 박기연</small></p>
+    </footer>
+</body>
+
+</html>

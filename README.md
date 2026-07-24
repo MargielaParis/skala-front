@@ -1,117 +1,94 @@
-# html-trendy
+# SKALA-FRONT — 박기연
 
-`html/` 폴더의 페이지들을 **CSS 없이 마크업만으로** 다시 작성한 버전입니다.
-스타일은 아직 추가하지 않았고, 기존 `../css/style.css`를 그대로 연결해 둔 상태입니다.
+SKALA 교육과정 **Full-stack Engineering (HTML · CSS · JavaScript, 강병호)** 실습 결과물입니다.
+개인 포털 "박기연의 유니버스"를 만들며 HTML 마크업 → CSS 스타일 → JavaScript 동작을 단계별로 구현했습니다.
 
-## 톤 & 매너
+- 제출 저장소: https://github.com/MargielaParis/skala-front
+- 순수 HTML · CSS · JavaScript만 사용 (프레임워크·빌드 도구 없음)
 
-- **이모지 없음.** 제목·메뉴·표·타임라인에서 이모지를 모두 제거했습니다.
-  대신 `01 02 03` 번호, `kicker` 라벨(`ABOUT ME`, `TIMETABLE` …), `&rarr;` `&larr;` 같은
-  타이포그래피 요소로 위계를 잡았습니다.
-- **네이티브 게이지 없음.** 브라우저 기본 `<progress>` / `<meter>` 위젯은 전부 걷어냈습니다.
+## 실행 방법
 
-## 단계 표시 / 진행률
+VS Code **Live Server**로 `index.html`을 엽니다. (또는 브라우저로 직접 열기)
 
-### 스텝퍼 — `signUp.html`, `signUpResult.html`
-게이지 바 대신 번호형 스텝퍼입니다. 각 항목에 `data-state`가 있어 CSS에서 상태별로 분기할 수 있습니다.
+- 실시간 날씨는 [Open-Meteo](https://open-meteo.com) 무료 API를 호출하므로 인터넷 연결이 필요합니다.
+- 미니 게임(업다운·성적 계산기·내 가방)은 사이드바 버튼으로 실행됩니다.
 
-```html
-<nav class="stepper" aria-label="가입 진행 단계" data-component="stepper">
-  <ol>
-    <li data-state="done">   <span class="stepper__index">01</span> … <span class="stepper__state">완료</span>
-    <li data-state="current" aria-current="step"> …
-    <li data-state="todo">   …
+## 폴더 구조
+
+```
+html_kiyeon/                  ← 제출 루트
+├── index.html                메인 허브 (과제 1·5·9)
+├── myProfile.html            소개 (과제 3)
+├── myClass.html              강의 시간표 (과제 4)
+├── myHoliday.html            휴일 일과 (과제 2)
+├── myHoliday2.html           휴일 일과 7월 버전 (추가 실습)
+├── myTrip.html               여행 앨범 (과제 8)
+├── signUp.html               회원가입 (과제 6)
+├── signUpResult.html         가입 완료 (과제 7)
+├── css/
+│   ├── trendy.css            메인 스타일 (CSS 미션 1~6)
+│   └── style.css             기본 테마
+├── script/
+│   ├── upDown.js  grade.js  bag.js         JS 기초 과제
+│   ├── weather.js                          실시간 날씨 (2단계)
+│   └── weatherAPI.js  realtimeInfo.js       실시간 날씨 (3단계 · 모듈)
+└── plain/                    CSS 없는 순수 마크업 버전 (아래 참고)
 ```
 
-```css
-.stepper li[data-state="done"]    { /* 체크 표시, 흐린 색 */ }
-.stepper li[data-state="current"] { /* 강조 색, 굵게 */ }
-.stepper li[data-state="todo"]    { /* 회색 */ }
-.stepper li + li::before          { content: ""; /* 연결선 */ }
-```
+## 과제 매핑
 
-### 프로그레스 바 — `index.html`(통계), `myProfile.html`(목표)
-직접 그릴 수 있는 커스텀 바입니다. 접근성은 `role="progressbar"` + `aria-value*`로 유지됩니다.
+### HTML — 필수 Element
 
-```html
-<span class="bar" role="progressbar" aria-labelledby="goal-book"
-      aria-valuemin="0" aria-valuemax="52" aria-valuenow="29" data-value="56">
-  <span class="bar__fill"></span>
-</span>
-```
-
-`data-value`가 채움 비율(%)입니다. CSS에서 `.bar__fill`의 너비만 잡아 주면 됩니다.
-숫자는 `.stat__value` / `.goal__count`로 따로 크게 보여 주고 있어서, CSS 없이도 값은 읽힙니다.
-
-### 숙련도 입력 — `signUp.html`
-`<input type="range">`(밋밋한 슬라이더)를 **세그먼티드 컨트롤**로 교체했습니다.
-라디오 5개라 CSS만으로 버튼형 토글로 만들 수 있습니다.
-
-```html
-<ul class="segmented" data-component="segmented-control">
-  <li><label><input type="radio" name="skillLevel" value="3" checked> <span>보통</span></label></li>
-```
-
-## 그 밖의 컴포넌트 (JS 없이 동작)
-
-| 컴포넌트 | 사용한 태그/속성 | 적용 위치 |
+| 과제 | 파일 | 필수 Element |
 |---|---|---|
-| 아코디언 / FAQ | `<details name="...">` `<summary>` | index, myClass, myTrip, myProfile, signUpResult |
-| 팝오버(모달·툴팁) | `popover` + `popovertarget` | index(안내), myClass(표 보는 법), signUp(약관) |
-| 자동완성 입력 | `<datalist>` | signUp(이메일) |
+| 1 · 5 · 9 | `index.html` | a / nav · main · aside (환영 인사 → 바로가기 → Hub) |
+| 2 | `myHoliday.html` | h1, h2, br, p, mark |
+| 3 | `myProfile.html` | ul, ol, dl |
+| 4 | `myClass.html` | table, thead, tbody, td 병합(rowspan·colspan) |
+| 6 | `signUp.html` | form, fieldset, legend, label, input, select, option, textarea, submit, reset |
+| 7 | `signUpResult.html` | signUp의 `action` 목적지 |
+| 8 | `myTrip.html` | audio+source, img, video+source |
 
-> `details`에 같은 `name`을 주면 하나만 열리는 **배타적 아코디언**이 됩니다.
+### CSS — 미션 1~6 (`css/trendy.css`)
 
-## 구조 정리
+| 미션 | 내용 |
+|---|---|
+| 1 | 전체 테마 · 글꼴 · 제목/링크 스타일 |
+| 2 | 박스 모델 · `.container` 가운데 정렬 · 카드 · 표 |
+| 3 | 가독성 높은 회원가입 폼 |
+| 4 | Flexbox(바로가기·main/aside) + Grid(카드 레이아웃) |
+| 5 | 반응형 — 화면이 좁아지면 세로 1열로 전환 (`@media`) |
+| 6 | 애니메이션 — 헤더 페이드인 등장, 카드 hover 시 떠오름, 부드러운 색 전환 |
 
-- `<hgroup>`으로 제목 + 부제 묶기, `<header>` / `<main>` / `<footer>` / `<address>` 명시
-- 모든 섹션에 `aria-labelledby`, 내비게이션에 `aria-label`
-- 빵부스러기(breadcrumb) 내비게이션과 `본문 바로가기` 스킵 링크 추가
-- 의미 없는 `<hr>` / `<br>` 대신 `<section>`으로 구획 분리
+### JavaScript — 과제
 
-### 표(myClass) 웹 표준화
-- 삭제된 속성 제거: `border` `cellpadding` `cellspacing` `bgcolor` `align`
-- `<caption>` `<colgroup>` 추가, 시간 열은 `<th scope="row">`, 요일은 `<th scope="col">`
-- `<time datetime="09:00">`으로 시간 데이터 표기
-- `.table-scroll` 래퍼 + `tabindex="0"`로 좁은 화면 스크롤 대비
+| 과제 | 파일 | 동작 |
+|---|---|---|
+| Up-Down 게임 | `script/upDown.js` | 1~50 무작위 숫자를 `prompt`/반복문으로 맞추기 |
+| 성적 계산기 | `script/grade.js` | 3과목 점수 입력 → 평균·합격 판정 |
+| 내 가방 보기 | `script/bag.js` | 소지품 객체 배열을 반복문으로 출력 |
+| 실시간 날씨 | `script/weatherAPI.js` + `realtimeInfo.js` | 도시 선택 시 `fetch`+`async/await`로 Open-Meteo에서 온도·습도 조회, `import`/`export` 모듈 분리 |
 
-### 폼(signUp) 현대화
-- `type="email"` `type="tel"` 도입, `autocomplete` / `inputmode` / `pattern` 추가
-- `<optgroup>`으로 가입 경로 그룹화, 도움말은 `aria-describedby`로 연결
-- `<input type="submit">` → `<button type="submit">`
-- 필수 약관 동의 체크박스 추가
+## 두 가지 버전
 
-### 미디어 최적화
-- `loading="lazy"` `decoding="async"`, 의미 있는 `alt` 텍스트
-- `<figure>` + `<figcaption>` 카드 구조, 비디오 `poster` / `playsinline` / `preload="metadata"`
-- 재생 실패 시 다운로드 링크 폴백
+이 저장소는 같은 페이지를 두 형태로 담고 있습니다.
 
-## CSS를 붙일 준비
+- **루트 (스타일 버전)** — `trendy.css`를 적용한 완성본.
+- **`plain/` (순수 마크업 버전)** — 스타일시트·`class`·인라인 `style` 없이 **시맨틱 HTML만**으로 작성.
+  과제 2·3·4는 CSS 사용이 금지되어 있어(스타일은 CSS 단계에서 별도 적용), 이 요구를 지킨 버전입니다.
+  자세한 내용은 [`plain/README.md`](plain/README.md) 참고.
 
-```
-.kicker                                         → 섹션 위 작은 라벨
-.nav-grid / .card-grid / .trip-grid-container   → grid 레이아웃
-.timeline / .timeline__item                     → 세로 타임라인
-.stepper li[data-state]                         → 단계 표시
-.bar / .bar__fill[data-value]                   → 커스텀 진행률 바
-.stat__value / .stat__unit / .goal__count       → 숫자 강조 타이포
-.card / .media-card / .definition-card          → 카드
-.badge[data-tone] / .chip                       → 뱃지·칩
-.segmented                                      → 세그먼티드 컨트롤
-.accordion / .popover-card                      → 아코디언·팝오버
-.breadcrumb / .skip-link                        → 경로·스킵 링크
-```
+## 지시 외 추가 실습
 
-`*__index` 클래스(`nav-grid__index`, `goal__index`, `stepper__index`, `trip-card__index`)는
-전부 `01 02 03` 번호라, 한 번에 모노스페이스 + 흐린 색으로 잡으면 통일감이 생깁니다.
+기본 요구사항 위에 다음을 더 구현했습니다.
 
-## 파일 목록
-`index.html` `myProfile.html` `myClass.html` `myHoliday.html` `myHoliday2.html` `myTrip.html` `signUp.html` `signUpResult.html`
-
-원본 `html/` 폴더는 그대로 두었습니다. (`indexOld.html`은 예전 버전이라 옮기지 않았습니다.)
+- **시맨틱 · 접근성**: `header`/`nav`/`main`/`aside`/`footer`, `aria-labelledby`, breadcrumb, `본문 바로가기` 스킵 링크, 표의 `caption`·`scope`, 폼의 `label`·`autocomplete`·`pattern`
+- **JS 없이 동작하는 컴포넌트**: `<details>` 아코디언, 네이티브 `popover`(안내·약관)
+- **커스텀 진행률 바**: `role="progressbar"` + `aria-value*` 유지, 값은 `data-value`로 관리
+- **반응형 · 라이트/다크**: `@media` 브레이크포인트 + `prefers-color-scheme`, `prefers-reduced-motion` 존중
+- **실시간 날씨**: DOM 이벤트 → 비동기 fetch → 모듈 분리까지 3단계 확장
 
 ## 참고
-- `index.html`은 기존 스크립트(`upDown.js`, `grade.js`, `bag.js`, `realtimeInfo.js`)를 그대로 사용합니다.
-  `#city-select`, `#weather-box`, `startGame()`, `checkGrade()`, `showMyBag()` 훅을 유지했습니다.
-- `popover` 속성은 Chrome/Edge 114+, Safari 17+, Firefox 125+ 에서 동작합니다.
-  미지원 브라우저에서는 팝오버 내용이 그냥 페이지에 보이게 됩니다.
+
+- `popover` 속성은 Chrome/Edge 114+, Safari 17+, Firefox 125+ 에서 동작합니다. 미지원 브라우저에서는 내용이 페이지에 그대로 보입니다.
+- 여행 사진·영상은 아직 준비 중이라 `myTrip.html`의 미디어는 자리표시(빈 `src`) 상태입니다.

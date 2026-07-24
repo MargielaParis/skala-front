@@ -1,0 +1,1609 @@
+@import url('https://fonts.googleapis.com/css2?family=Hahmlet:wght@500;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap');
+
+/* ==========================================================================
+   박기연의 유니버스 — html-trendy 전용 스타일
+   컨셉 : 모눈종이 위에 올린 한 주 (Ruled Sheet)
+   - 페이지 전체가 32px 모눈 위에 놓이고, 카드는 그 위에 얹힌 흰 종이입니다.
+   - 시간표(myClass)가 이 컨셉의 원형이고, 나머지 컴포넌트가 같은 괘선을 빌려 씁니다.
+   - 서체 : 제목 Hahmlet(명조) / 본문 IBM Plex Sans KR / 숫자·라벨 IBM Plex Mono
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. 디자인 토큰
+   -------------------------------------------------------------------------- */
+:root {
+    color-scheme: light dark;
+
+    /* 모눈 한 칸 */
+    --cell: 32px;
+
+    /* 색 — 리장의 코발트 하늘, 세부 야경의 나트륨 등빛에서 가져왔습니다 */
+    --paper: #f4f6fa;
+    --panel: #ffffff;
+    --panel-2: #fafbfd;
+    --grid: #e6ebf3;
+    --rule: #d6dde8;
+    --rule-strong: #b6c0d0;
+
+    --ink: #111823;
+    --ink-2: #4a566d;
+    --ink-3: #7d8a9f;
+
+    --cobalt: #15529b;
+    --cobalt-2: #0e3c74;
+    --cobalt-tint: #e9f0f9;
+
+    --amber: #c9761a;
+    --amber-2: #9c5a0f;
+    --amber-tint: #fbf0e1;
+
+    --ok: #1f7a5c;
+    --ok-tint: #e5f3ee;
+    --mark: #ffe9a8;
+
+    /* 서체 */
+    --font-display: 'Hahmlet', 'Nanum Myeongjo', serif;
+    --font-body: 'IBM Plex Sans KR', system-ui, -apple-system, sans-serif;
+    --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace;
+
+    /* 크기 */
+    --fs-label: 0.6875rem;
+    --fs-small: 0.8125rem;
+    --fs-base: 1rem;
+    --fs-lead: 1.0625rem;
+    --fs-h3: 1.25rem;
+    --fs-h2: clamp(1.5rem, 1.1rem + 1.4vw, 2rem);
+    --fs-h1: clamp(2rem, 1.2rem + 3.4vw, 3.25rem);
+
+    --t: 160ms cubic-bezier(0.2, 0.6, 0.3, 1);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --paper: #0f131a;
+        --panel: #161c26;
+        --panel-2: #1a212c;
+        --grid: #1a2029;
+        --rule: #2b3542;
+        --rule-strong: #465469;
+
+        --ink: #e9edf4;
+        --ink-2: #aab5c6;
+        --ink-3: #7f8b9d;
+
+        --cobalt: #74aae8;
+        --cobalt-2: #a3c8f3;
+        --cobalt-tint: #16243a;
+
+        --amber: #eda85c;
+        --amber-2: #f3c288;
+        --amber-tint: #2a2014;
+
+        --ok: #5fc0a0;
+        --ok-tint: #14261f;
+        --mark: #6b5a1f;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   2. 기본 골격
+   -------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: var(--fs-base);
+    line-height: 1.7;
+    color: var(--ink);
+    background-color: var(--paper);
+    /* 모눈 배경 — 이 사이트의 시그니처 */
+    background-image:
+        repeating-linear-gradient(to right, var(--grid) 0 1px, transparent 1px var(--cell)),
+        repeating-linear-gradient(to bottom, var(--grid) 0 1px, transparent 1px var(--cell));
+    -webkit-font-smoothing: antialiased;
+    word-break: keep-all;
+}
+
+h1,
+h2,
+h3,
+h4,
+hgroup,
+p,
+ul,
+ol,
+dl,
+dd,
+figure,
+blockquote {
+    margin: 0;
+}
+
+ul,
+ol {
+    padding: 0;
+    list-style: none;
+}
+
+img,
+video {
+    display: block;
+    max-width: 100%;
+}
+
+/* 제목 — 명조는 큰 제목에만, 아껴서 씁니다 */
+h1 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: var(--fs-h1);
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+}
+
+h2 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--fs-h2);
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+}
+
+h3 {
+    font-size: var(--fs-h3);
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+h4 {
+    font-size: 1.0625rem;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+a {
+    color: var(--cobalt);
+    text-decoration: none;
+    text-underline-offset: 3px;
+    transition: color var(--t);
+}
+
+a:hover {
+    color: var(--cobalt-2);
+    text-decoration: underline;
+}
+
+strong {
+    font-weight: 600;
+}
+
+small {
+    font-size: var(--fs-small);
+}
+
+abbr[title] {
+    text-decoration-style: dotted;
+    cursor: help;
+}
+
+mark {
+    background: var(--mark);
+    color: inherit;
+    padding: 0 0.2em;
+}
+
+kbd {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    border: 1px solid var(--rule);
+    border-bottom-width: 2px;
+    padding: 0.1em 0.45em;
+    background: var(--panel);
+}
+
+time {
+    font-variant-numeric: tabular-nums;
+}
+
+:focus-visible {
+    outline: 2px solid var(--cobalt);
+    outline-offset: 2px;
+}
+
+/* 건너뛰기 링크 */
+.skip-link {
+    position: absolute;
+    left: 0.5rem;
+    top: -4rem;
+    z-index: 20;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 0.6rem 1rem;
+    font-size: var(--fs-small);
+    transition: top var(--t);
+}
+
+.skip-link:focus {
+    top: 0.5rem;
+    text-decoration: none;
+}
+
+/* --------------------------------------------------------------------------
+   3. 레이아웃
+   -------------------------------------------------------------------------- */
+.container {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: clamp(1.25rem, 4vw, 3rem) clamp(1rem, 3vw, 2rem) 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(2rem, 4vw, 3.25rem);
+}
+
+main,
+aside,
+.container > nav,
+.container > section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+main > section,
+aside > section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* 홈: 본문 + 사이드바 */
+.content-wrapper {
+    display: grid;
+    grid-template-columns: minmax(0, 7fr) minmax(0, 3fr);
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+    align-items: start;
+}
+
+/* 괘선 — 모든 구획은 얇은 선 아래에서 시작합니다 */
+.kicker {
+    font-family: var(--font-mono);
+    font-size: var(--fs-label);
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    border-top: 1px solid var(--rule);
+    padding-top: 0.75rem;
+    margin-bottom: 0.35rem;
+}
+
+/* --------------------------------------------------------------------------
+   4. 머리말 / 이동 경로
+   -------------------------------------------------------------------------- */
+.site-header,
+.page-header {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-bottom: 1.75rem;
+    border-bottom: 2px solid var(--ink);
+}
+
+/* 미션6 — index를 처음 열면 상단 헤더 타이틀이 부드럽게 페이드인되며 등장.
+   (동작 최소화 설정 시 파일 하단 prefers-reduced-motion 블록이 자동으로 끕니다.) */
+@keyframes trendy-hero-in {
+    from { opacity: 0; transform: translateY(-14px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.site-header {
+    animation: trendy-hero-in 700ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.site-header hgroup,
+.page-header hgroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.site-header__tagline,
+.page-header hgroup p {
+    font-size: var(--fs-lead);
+    color: var(--ink-2);
+    max-width: 46ch;
+}
+
+.site-header__meta,
+.page-header > p {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: var(--fs-small);
+    color: var(--ink-2);
+}
+
+.breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: var(--fs-small);
+    color: var(--ink-3);
+}
+
+.breadcrumb li + li::before {
+    content: "/";
+    margin-right: 0.5rem;
+    color: var(--rule-strong);
+}
+
+.breadcrumb [aria-current="page"] {
+    color: var(--ink);
+}
+
+/* --------------------------------------------------------------------------
+   5. 뱃지 · 칩 · 버튼
+   -------------------------------------------------------------------------- */
+.badge {
+    font-family: var(--font-mono);
+    font-size: var(--fs-label);
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.5rem;
+    border: 1px solid currentColor;
+    color: var(--ink-2);
+    white-space: nowrap;
+}
+
+.badge[data-tone="new"],
+.badge[data-tone="update"] {
+    color: var(--amber-2);
+    background: var(--amber-tint);
+}
+
+.badge[data-tone="info"] {
+    color: var(--cobalt);
+    background: var(--cobalt-tint);
+}
+
+.badge[data-tone="success"] {
+    color: var(--ok);
+    background: var(--ok-tint);
+}
+
+.chip-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.chip {
+    display: inline-block;
+    font-size: var(--fs-small);
+    padding: 0.25rem 0.7rem;
+    background: var(--panel);
+    border: 1px solid var(--rule);
+    color: var(--ink-2);
+}
+
+button {
+    font-family: inherit;
+}
+
+.btn-ghost {
+    font-family: var(--font-mono);
+    font-size: var(--fs-label);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    background: transparent;
+    border: 1px solid var(--rule-strong);
+    padding: 0.3rem 0.7rem;
+    cursor: pointer;
+    transition: border-color var(--t), color var(--t);
+}
+
+.btn-ghost:hover {
+    color: var(--cobalt);
+    border-color: var(--cobalt);
+}
+
+.btn-submit,
+.btn-reset {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    padding: 0.7rem 1.4rem;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: background-color var(--t), color var(--t), border-color var(--t);
+}
+
+.btn-submit {
+    background: var(--cobalt);
+    color: #fff;
+}
+
+.btn-submit:hover {
+    background: var(--cobalt-2);
+}
+
+.btn-reset {
+    background: transparent;
+    color: var(--ink-2);
+    border-color: var(--rule-strong);
+}
+
+.btn-reset:hover {
+    border-color: var(--ink-2);
+    color: var(--ink);
+}
+
+@media (prefers-color-scheme: dark) {
+    .btn-submit {
+        color: #0f131a;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   6. 카드형 내비게이션
+   -------------------------------------------------------------------------- */
+.nav-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(11.5rem, 1fr));
+    gap: 0.75rem;
+}
+
+.nav-grid li {
+    display: flex;
+}
+
+.nav-grid a {
+    flex: 1;
+    border: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+        "index title"
+        "index desc";
+    column-gap: 0.9rem;
+    row-gap: 0.15rem;
+    align-content: start;
+    height: 100%;
+    padding: 1.25rem 1.1rem;
+    background: var(--panel);
+    color: var(--ink);
+    border-top: 3px solid var(--rule);
+    transition: background-color var(--t), border-color var(--t), transform var(--t), box-shadow var(--t);
+}
+
+.nav-grid a:hover,
+.nav-grid a:focus-visible {
+    background: var(--cobalt-tint);
+    border-top-color: var(--cobalt);
+    text-decoration: none;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(17, 24, 35, 0.12);
+}
+
+.nav-grid__index {
+    grid-area: index;
+    font-family: var(--font-mono);
+    font-size: var(--fs-small);
+    color: var(--ink-3);
+    padding-top: 0.15rem;
+}
+
+.nav-grid a:hover .nav-grid__index {
+    color: var(--cobalt);
+}
+
+.nav-grid strong {
+    grid-area: title;
+    font-size: 1.0625rem;
+}
+
+.nav-grid small {
+    grid-area: desc;
+    color: var(--ink-3);
+    line-height: 1.5;
+}
+
+/* --------------------------------------------------------------------------
+   7. 숫자 · 진행률 바
+   -------------------------------------------------------------------------- */
+/* 1px 간격 + 부모 배경으로 괘선을 만드는 방식입니다.
+   빈 칸이 생기면 회색으로 비쳐 보이므로 열 수를 항목 수에 맞춰 고정합니다.
+   항목을 늘리면 repeat() 숫자도 같이 바꿔 주세요. */
+.stat-list,
+.card-grid,
+.definition-cards,
+.next-steps {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+}
+
+@media (max-width: 820px) {
+    .stat-list,
+    .card-grid,
+    .definition-cards,
+    .next-steps {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+.stat {
+    background: var(--panel);
+    padding: 1.25rem 1.1rem;
+}
+
+.stat dt {
+    font-size: var(--fs-small);
+    color: var(--ink-3);
+    margin-bottom: 0.4rem;
+}
+
+.stat__value {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 2.25rem;
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+}
+
+.stat__unit {
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: var(--ink-3);
+    margin-left: 0.35rem;
+    letter-spacing: 0;
+}
+
+.stat__caption {
+    display: block;
+    font-size: var(--fs-small);
+    color: var(--ink-2);
+    margin-top: 0.5rem;
+}
+
+.stat dd {
+    margin: 0;
+}
+
+.stat .bar {
+    margin-top: 0.9rem;
+}
+
+/* 진행률 바 : 눈금 있는 자 모양 */
+.bar {
+    display: block;
+    position: relative;
+    height: 10px;
+    background-color: var(--panel-2);
+    background-image: repeating-linear-gradient(to right, var(--rule) 0 1px, transparent 1px 25%);
+    border: 1px solid var(--rule);
+}
+
+.bar__fill {
+    display: block;
+    height: 100%;
+    width: 0;
+    background: var(--cobalt);
+    transition: width 700ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+/* 채움 값은 마크업의 data-value(%)를 그대로 씁니다. 값이 늘면 여기에 한 줄만 추가하세요. */
+.bar[data-value="0"] .bar__fill { width: 0%; }
+.bar[data-value="27"] .bar__fill { width: 27%; }
+.bar[data-value="30"] .bar__fill { width: 30%; }
+.bar[data-value="50"] .bar__fill { width: 50%; }
+
+/* --------------------------------------------------------------------------
+   8. 카드 · 미디어
+   -------------------------------------------------------------------------- */
+.card {
+    background: var(--panel);
+    border: 1px solid var(--rule);
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.card__meta {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--font-mono);
+    font-size: var(--fs-small);
+    color: var(--ink-3);
+    margin-bottom: 0.5rem;
+}
+
+.card header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.card footer {
+    font-size: var(--fs-small);
+    margin-top: 0.25rem;
+}
+
+.card-grid .card {
+    border: 0;
+    gap: 0.35rem;
+}
+
+.card-grid .card strong {
+    font-size: 1.0625rem;
+}
+
+.card-grid .card p {
+    color: var(--ink-2);
+    font-size: var(--fs-small);
+}
+
+.media-card {
+    background: var(--panel);
+    border: 1px solid var(--rule);
+    padding: 0.75rem;
+}
+
+.media-card img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    background: var(--panel-2);
+}
+
+/* 영상은 잘리면 안 되므로 원본 비율을 지킵니다 */
+[data-component="video-player"] {
+    max-width: 44rem;
+}
+
+.media-card video {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: contain;
+    background: #000;
+}
+
+.media-card figcaption {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.6rem;
+    padding: 0.85rem 0.25rem 0.15rem;
+    font-size: var(--fs-small);
+    color: var(--ink-3);
+}
+
+.media-card figcaption strong {
+    font-size: var(--fs-base);
+    color: var(--ink);
+}
+
+/* --------------------------------------------------------------------------
+   9. 여행 앨범
+   -------------------------------------------------------------------------- */
+.trip-grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 1.25rem;
+}
+
+.trip-card {
+    height: 100%;
+    background: var(--panel);
+    border: 1px solid var(--rule);
+    padding: 0.6rem;
+    transition: border-color var(--t), transform var(--t), box-shadow var(--t);
+}
+
+/* 미션6 — 카드에 마우스를 올리면 살짝 떠오르고 그림자가 진해집니다. */
+.trip-card:hover {
+    border-color: var(--rule-strong);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 24px rgba(17, 24, 35, 0.14);
+}
+
+.trip-card img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+}
+
+.trip-card figcaption {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 0.7rem;
+    padding: 0.8rem 0.35rem 0.35rem;
+}
+
+.trip-card__index {
+    grid-row: span 2;
+    font-family: var(--font-mono);
+    font-size: var(--fs-small);
+    color: var(--ink-3);
+    padding-top: 0.2rem;
+}
+
+.trip-card figcaption strong {
+    font-size: 1.0625rem;
+}
+
+.trip-card figcaption small {
+    color: var(--ink-3);
+}
+
+.bgm {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    padding: 1rem 1.1rem;
+    background: var(--panel);
+    border: 1px solid var(--rule);
+}
+
+.bgm h2 {
+    font-family: var(--font-mono);
+    font-size: var(--fs-label);
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+}
+
+audio {
+    width: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   10. 목표 리스트 (myProfile)
+   -------------------------------------------------------------------------- */
+.section-summary {
+    display: flex;
+    align-items: baseline;
+    gap: 0.8rem;
+    color: var(--ink-2);
+    font-size: var(--fs-small);
+}
+
+.section-summary .stat__value {
+    display: inline-block;
+    font-size: 1.75rem;
+}
+
+.goal-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.goal {
+    padding: 1.1rem 0;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.goal:last-child {
+    border-bottom: 1px solid var(--rule);
+}
+
+.goal__head {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: baseline;
+    gap: 0.9rem;
+}
+
+.goal__index {
+    font-family: var(--font-mono);
+    font-size: var(--fs-small);
+    color: var(--ink-3);
+}
+
+.goal__count {
+    font-family: var(--font-mono);
+    font-size: 0.9375rem;
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+}
+
+.goal__count small {
+    color: var(--ink-3);
+}
+
+.goal__note {
+    color: var(--ink-3);
+}
+
+/* 키워드 카드 */
+.definition-card {
+    background: var(--panel);
+    padding: 1.25rem 1.1rem;
+}
+
+.definition-card dt {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.25rem;
+    margin-bottom: 0.4rem;
+}
+
+.definition-card dd {
+    margin: 0;
+    color: var(--ink-2);
+    font-size: var(--fs-small);
+    line-height: 1.65;
+}
+
+/* --------------------------------------------------------------------------
+   11. 시간표 — 이 사이트 괘선의 원형
+   -------------------------------------------------------------------------- */
+.table-scroll {
+    overflow-x: auto;
+    border: 1px solid var(--rule);
+    background: var(--panel);
+}
+
+.timetable {
+    width: 100%;
+    min-width: 44rem;
+    border-collapse: collapse;
+    font-size: 0.9375rem;
+}
+
+/* caption은 display를 바꾸면 표 위 제목 자리를 잃습니다. 그대로 두고 안쪽만 꾸밉니다. */
+.timetable caption {
+    text-align: left;
+    padding: 1rem 1.1rem;
+    border-bottom: 1px solid var(--rule);
+    font-weight: 600;
+}
+
+.timetable caption small {
+    font-family: var(--font-mono);
+    font-size: var(--fs-label);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    font-weight: 400;
+    margin-left: 0.75rem;
+}
+
+.timetable .col-time {
+    width: 9.5rem;
+}
+
+.timetable thead th {
+    font-family: var(--font-mono);
+    font-size: var(--fs-label);
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    padding: 0.7rem 0.75rem;
+    border-bottom: 2px solid var(--ink);
+    background: var(--panel-2);
+}
+
+.timetable tbody th[scope="row"] {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: var(--ink-3);
+    text-align: right;
+    white-space: nowrap;
+    padding: 0.7rem 0.9rem;
+    background: var(--panel-2);
+    border-right: 1px solid var(--rule);
+    vertical-align: top;
+}
+
+.timetable td {
+    padding: 0.7rem 0.85rem;
+    border: 1px solid var(--rule);
+    border-left: 0;
+    vertical-align: top;
+    line-height: 1.45;
+}
+
+.timetable td small {
+    display: block;
+    color: var(--ink-3);
+    font-size: 0.75rem;
+    margin-top: 0.15rem;
+}
+
+/* 연강(rowspan)은 코발트 세로선으로 이어져 보이게 */
+.timetable td[rowspan] {
+    box-shadow: inset 3px 0 0 var(--cobalt-tint);
+}
+
+.timetable td[rowspan="3"],
+.timetable td[rowspan="4"] {
+    box-shadow: inset 3px 0 0 var(--cobalt);
+}
+
+.timetable tbody tr:hover td {
+    background: var(--panel-2);
+}
+
+.timetable .row-break[data-type="lunch"] td {
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: var(--fs-label);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--amber-2);
+    background: var(--amber-tint);
+    padding: 0.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   12. 타임라인 (휴일 계획)
+   -------------------------------------------------------------------------- */
+.timeline {
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid var(--rule);
+    padding-left: 1.25rem;
+    margin-left: 0.35rem;
+}
+
+.timeline__item {
+    position: relative;
+    display: grid;
+    grid-template-columns: 4.5rem 1fr;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 0.7rem 0;
+}
+
+.timeline__item + .timeline__item {
+    border-top: 1px dashed var(--rule);
+}
+
+.timeline__item::before {
+    content: "";
+    position: absolute;
+    left: -1.5rem;
+    top: 1.15rem;
+    width: 7px;
+    height: 7px;
+    background: var(--rule-strong);
+}
+
+.timeline__item time {
+    font-family: var(--font-mono);
+    font-size: var(--fs-small);
+    color: var(--ink-2);
+}
+
+/* 하루의 때에 따라 표식 색이 달라집니다 */
+[data-part="morning"] .timeline__item::before {
+    background: var(--amber);
+}
+
+[data-part="afternoon"] .timeline__item::before {
+    background: var(--cobalt);
+}
+
+[data-part="evening"] .timeline__item::before {
+    background: var(--ink);
+}
+
+.checklist li {
+    padding: 0.35rem 0 0.35rem 1.25rem;
+    position: relative;
+    color: var(--ink-2);
+}
+
+.checklist li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.85rem;
+    width: 8px;
+    height: 8px;
+    border: 1px solid var(--rule-strong);
+}
+
+/* --------------------------------------------------------------------------
+   13. 아코디언 · 팝오버
+   -------------------------------------------------------------------------- */
+.accordion {
+    background: var(--panel);
+    border: 1px solid var(--rule);
+}
+
+.accordion + .accordion {
+    border-top: 0;
+}
+
+.accordion summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.85rem 1.1rem;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    cursor: pointer;
+    list-style: none;
+    transition: background-color var(--t);
+}
+
+.accordion summary::-webkit-details-marker {
+    display: none;
+}
+
+.accordion summary::after {
+    content: "+";
+    font-family: var(--font-mono);
+    font-size: 1.125rem;
+    color: var(--ink-3);
+    transition: transform var(--t);
+}
+
+.accordion[open] summary::after {
+    content: "−";
+}
+
+.accordion summary:hover {
+    background: var(--panel-2);
+}
+
+.accordion > *:not(summary) {
+    padding: 0 1.1rem 1.1rem;
+    font-size: 0.9375rem;
+    color: var(--ink-2);
+}
+
+.accordion li {
+    padding: 0.2rem 0;
+}
+
+.accordion dt {
+    font-weight: 600;
+    color: var(--ink);
+    margin-top: 0.6rem;
+}
+
+.accordion dd {
+    margin: 0;
+}
+
+.accordion blockquote {
+    border-left: 2px solid var(--cobalt);
+    padding-left: 1rem;
+}
+
+.accordion blockquote footer {
+    font-size: var(--fs-small);
+    color: var(--ink-3);
+    margin-top: 0.35rem;
+}
+
+.popover-card {
+    max-width: min(32rem, calc(100vw - 2rem));
+    margin: auto;
+    padding: 1.5rem;
+    background: var(--panel);
+    color: var(--ink);
+    border: 1px solid var(--ink);
+    box-shadow: 8px 8px 0 var(--cobalt-tint);
+}
+
+.popover-card h2 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+}
+
+.popover-card ul,
+.popover-card ol {
+    padding-left: 1.1rem;
+    list-style: disc;
+    color: var(--ink-2);
+    font-size: 0.9375rem;
+}
+
+.popover-card ol {
+    list-style: decimal;
+}
+
+.popover-card button {
+    margin-top: 1.25rem;
+    font-family: var(--font-mono);
+    font-size: var(--fs-label);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: var(--ink);
+    color: var(--paper);
+    border: 0;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+
+.popover-card::backdrop {
+    background: rgba(17, 24, 35, 0.35);
+}
+
+/* --------------------------------------------------------------------------
+   14. 단계 표시 (회원가입)
+   -------------------------------------------------------------------------- */
+.stepper ol {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+}
+
+.stepper li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    padding: 0.9rem 1rem;
+    background: var(--panel);
+    border-top: 3px solid var(--rule);
+}
+
+.stepper__index {
+    font-family: var(--font-mono);
+    font-size: var(--fs-small);
+    color: var(--ink-3);
+}
+
+.stepper__label {
+    font-weight: 600;
+}
+
+.stepper__state {
+    font-family: var(--font-mono);
+    font-size: var(--fs-label);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+}
+
+.stepper li[data-state="done"] {
+    border-top-color: var(--cobalt);
+}
+
+.stepper li[data-state="done"] .stepper__index,
+.stepper li[data-state="done"] .stepper__state {
+    color: var(--cobalt);
+}
+
+.stepper li[data-state="current"] {
+    border-top-color: var(--amber);
+    background: var(--amber-tint);
+}
+
+.stepper li[data-state="current"] .stepper__index,
+.stepper li[data-state="current"] .stepper__state {
+    color: var(--amber-2);
+}
+
+.stepper li[data-state="todo"] .stepper__label {
+    color: var(--ink-3);
+    font-weight: 500;
+}
+
+/* 다음 할 일 목록 */
+.next-steps li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    padding: 1.25rem 1.1rem;
+    background: var(--panel);
+}
+
+.next-steps__index {
+    font-family: var(--font-mono);
+    font-size: var(--fs-small);
+    color: var(--cobalt);
+}
+
+.next-steps p {
+    font-size: var(--fs-small);
+    color: var(--ink-2);
+    line-height: 1.6;
+}
+
+/* --------------------------------------------------------------------------
+   15. 폼
+   -------------------------------------------------------------------------- */
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+fieldset {
+    border: 1px solid var(--rule);
+    background: var(--panel);
+    padding: 1.5rem;
+    margin: 0;
+}
+
+legend {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    padding: 0 0.5rem;
+    margin-left: -0.5rem;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    margin-bottom: 1.25rem;
+}
+
+.field:last-child {
+    margin-bottom: 0;
+}
+
+/* 폼 안의 보조 버튼은 내용만큼만 넓게 */
+.field .btn-ghost {
+    align-self: flex-start;
+    margin-top: 0.25rem;
+}
+
+.field > label {
+    font-size: 0.9375rem;
+    font-weight: 600;
+}
+
+.field small {
+    color: var(--ink-3);
+    font-size: var(--fs-small);
+}
+
+.req {
+    color: var(--amber-2);
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="date"],
+input[type="tel"],
+select,
+textarea {
+    width: 100%;
+    font-family: inherit;
+    font-size: 0.9375rem;
+    color: var(--ink);
+    background: var(--panel-2);
+    border: 1px solid var(--rule-strong);
+    padding: 0.65rem 0.75rem;
+    transition: border-color var(--t), background-color var(--t);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    background: var(--panel);
+    border-color: var(--cobalt);
+    outline: 2px solid var(--cobalt-tint);
+    outline-offset: 0;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: var(--ink-3);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 8rem;
+    line-height: 1.6;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    accent-color: var(--cobalt);
+    width: auto;
+    margin: 0 0.5rem 0 0;
+    cursor: pointer;
+}
+
+.field-group {
+    border: 0;
+    border-top: 1px solid var(--rule);
+    padding: 1rem 0 0;
+    margin-bottom: 1.25rem;
+    background: transparent;
+}
+
+.field-group > legend {
+    padding: 0;
+    margin: 0;
+    color: var(--ink-3);
+}
+
+.field-group > label {
+    display: inline-flex;
+    align-items: center;
+    margin: 0.5rem 1.25rem 0 0;
+    font-size: 0.9375rem;
+    cursor: pointer;
+}
+
+.checkbox-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+}
+
+.checkbox-list label {
+    display: flex;
+    align-items: center;
+    padding: 0.55rem 0.75rem;
+    border: 1px solid var(--rule);
+    font-size: 0.9375rem;
+    cursor: pointer;
+    transition: border-color var(--t), background-color var(--t);
+}
+
+.checkbox-list label:hover {
+    border-color: var(--cobalt);
+    background: var(--cobalt-tint);
+}
+
+/* 세그먼티드 컨트롤 : 라디오를 버튼 띠로 */
+.segmented {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 0.75rem;
+    border: 1px solid var(--rule-strong);
+    width: fit-content;
+    max-width: 100%;
+}
+
+.segmented li + li {
+    border-left: 1px solid var(--rule-strong);
+}
+
+.segmented label {
+    display: block;
+    cursor: pointer;
+}
+
+.segmented input {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+}
+
+.segmented span {
+    display: block;
+    padding: 0.55rem 1.1rem;
+    font-size: 0.9375rem;
+    color: var(--ink-2);
+    background: var(--panel);
+    transition: background-color var(--t), color var(--t);
+}
+
+.segmented label:hover span {
+    background: var(--cobalt-tint);
+    color: var(--cobalt);
+}
+
+.segmented input:checked + span {
+    background: var(--cobalt);
+    color: #fff;
+    font-weight: 600;
+}
+
+.segmented input:focus-visible + span {
+    outline: 2px solid var(--cobalt);
+    outline-offset: 2px;
+}
+
+@media (prefers-color-scheme: dark) {
+    .segmented input:checked + span {
+        color: #0f131a;
+    }
+}
+
+.form-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    padding-top: 0.25rem;
+}
+
+/* --------------------------------------------------------------------------
+   16. 사이드바 (실시간 정보 · 놀이터)
+   -------------------------------------------------------------------------- */
+.content-wrapper aside {
+    background: var(--panel);
+    border: 1px solid var(--rule);
+    padding: 1.25rem;
+    position: sticky;
+    top: 1.5rem;
+}
+
+.content-wrapper aside .kicker {
+    border-top: 0;
+    padding-top: 0;
+}
+
+aside h2 {
+    font-size: 1.375rem;
+}
+
+aside h3 {
+    font-size: 1rem;
+}
+
+aside p {
+    font-size: var(--fs-small);
+    color: var(--ink-2);
+}
+
+aside label[for="city-select"] {
+    display: block;
+    font-size: var(--fs-small);
+    font-weight: 600;
+    margin-bottom: 0.35rem;
+}
+
+aside select {
+    background: var(--panel-2);
+}
+
+#weather-box {
+    margin-top: 0.75rem;
+    font-size: var(--fs-small);
+}
+
+#weather-box p {
+    margin: 0;
+}
+
+.game-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.game-list .btn-submit {
+    width: 100%;
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--rule-strong);
+    font-weight: 500;
+    text-align: left;
+    padding: 0.6rem 0.9rem;
+}
+
+.game-list .btn-submit:hover {
+    background: var(--cobalt);
+    border-color: var(--cobalt);
+    color: #fff;
+}
+
+@media (prefers-color-scheme: dark) {
+    .game-list .btn-submit:hover {
+        color: #0f131a;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   17. 바닥글
+   -------------------------------------------------------------------------- */
+.site-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding-top: 1.5rem;
+    border-top: 2px solid var(--ink);
+    font-size: var(--fs-small);
+    color: var(--ink-3);
+}
+
+.site-footer nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+}
+
+.site-footer address {
+    font-style: normal;
+}
+
+/* --------------------------------------------------------------------------
+   18. 반응형
+   -------------------------------------------------------------------------- */
+@media (max-width: 900px) {
+    .content-wrapper {
+        grid-template-columns: 1fr;
+    }
+
+    .content-wrapper aside {
+        position: static;
+    }
+}
+
+@media (max-width: 640px) {
+    :root {
+        --cell: 24px;
+    }
+
+    .stepper ol {
+        grid-template-columns: 1fr;
+    }
+
+    .timeline__item {
+        grid-template-columns: 3.75rem 1fr;
+        gap: 0.75rem;
+    }
+
+    .goal__head {
+        grid-template-columns: auto 1fr;
+        row-gap: 0.2rem;
+    }
+
+    .goal__count {
+        grid-column: 2;
+    }
+
+    .segmented {
+        width: 100%;
+    }
+
+    .segmented li {
+        flex: 1;
+    }
+
+    .segmented span {
+        padding: 0.55rem 0.5rem;
+        text-align: center;
+    }
+
+    fieldset {
+        padding: 1.1rem;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   19. 동작 최소화 설정 존중
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}

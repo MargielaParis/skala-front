@@ -7,7 +7,7 @@
     <meta name="description" content="월요일부터 금요일까지의 주간 강의 시간표입니다.">
     <meta name="theme-color" content="#4f46e5">
     <title>나의 강의 시간표 | 박기연의 유니버스</title>
-    <link rel="stylesheet" href="../css/trendy.css">
+    <link rel="stylesheet" href="css/trendy.css">
 </head>
 
 <body>
@@ -30,7 +30,7 @@
             </hgroup>
             <p>
                 <span class="badge" data-tone="info">주 5일</span>
-                <span class="badge" data-tone="info">총 18과목</span>
+                <span class="badge" data-tone="info">총 3과목</span>
                 <button type="button" popovertarget="legend-pop" class="btn-ghost">표 보는 법</button>
             </p>
 
@@ -38,7 +38,8 @@
                 <h2>표 보는 법</h2>
                 <ul>
                     <li>세로로 병합된 칸은 연강(연속 수업)입니다.</li>
-                    <li>점심시간은 가로로 병합되어 있습니다.</li>
+                    <li>가로로 병합된 칸은 여러 요일에 걸쳐 같은 과목이 이어진다는 뜻입니다.</li>
+                    <li>점심시간은 요일 전체가 가로로 병합되어 있습니다.</li>
                 </ul>
                 <button type="button" popovertarget="legend-pop" popovertargetaction="hide">닫기</button>
             </div>
@@ -71,53 +72,44 @@
                     </thead>
 
                     <tbody>
+                        <!-- 오전: 09:00–12:30. 하루 종일 같은 과목이라 세로 4칸 병합,
+                             화·수와 목·금은 같은 과목이라 가로 2칸도 함께 병합했습니다. -->
                         <tr>
                             <th scope="row"><time datetime="09:00">09:00</time>–<time datetime="10:00">10:00</time></th>
-                            <td rowspan="3">HTML · CSS<br><small>웹 표준 마크업</small></td>
-                            <td rowspan="2">자바스크립트<br><small>ES6+ 문법</small></td>
-                            <td rowspan="3">Vue.js<br><small>컴포넌트 설계</small></td>
-                            <td>AI 활용 특강</td>
-                            <td rowspan="3">Java · Spring<br><small>백엔드 연동</small></td>
+                            <td rowspan="4">데이터 분석 개요 및 기초 통계</td>
+                            <td rowspan="4" colspan="2">LLM과 Transformer 아키텍처</td>
+                            <td rowspan="4" colspan="2">HTML · CSS · JavaScript</td>
                         </tr>
                         <tr>
                             <th scope="row"><time datetime="10:00">10:00</time>–<time datetime="11:00">11:00</time></th>
-                            <td rowspan="2">데이터베이스<br><small>SQL 실습</small></td>
                         </tr>
                         <tr>
                             <th scope="row"><time datetime="11:00">11:00</time>–<time datetime="12:00">12:00</time></th>
-                            <td>알고리즘 문제풀이</td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><time datetime="12:00">12:00</time>–<time datetime="12:30">12:30</time></th>
                         </tr>
 
                         <tr class="row-break" data-type="lunch">
-                            <th scope="row"><time datetime="12:00">12:00</time>–<time datetime="13:00">13:00</time></th>
+                            <th scope="row"><time datetime="12:30">12:30</time>–<time datetime="13:30">13:30</time></th>
                             <td colspan="5">점심시간</td>
                         </tr>
 
+                        <!-- 오후: 13:30–17:50 -->
                         <tr>
-                            <th scope="row"><time datetime="13:00">13:00</time>–<time datetime="14:00">14:00</time></th>
-                            <td rowspan="4">UI/UX<br><small>디자인 시스템</small></td>
-                            <td rowspan="2">Docker<br><small>컨테이너 실습</small></td>
-                            <td rowspan="2">클라우드<br><small>AWS 기초</small></td>
-                            <td rowspan="3">자료구조 · 알고리즘</td>
-                            <td>개인 프로젝트</td>
+                            <th scope="row"><time datetime="13:30">13:30</time>–<time datetime="14:30">14:30</time></th>
+                            <td rowspan="4">데이터 분석 개요 및 기초 통계</td>
+                            <td rowspan="4" colspan="2">LLM과 Transformer 아키텍처</td>
+                            <td rowspan="4" colspan="2">HTML · CSS · JavaScript</td>
                         </tr>
                         <tr>
-                            <th scope="row"><time datetime="14:00">14:00</time>–<time datetime="15:00">15:00</time></th>
-                            <td rowspan="3">팀 프로젝트<br><small>SKALA 미니 프로젝트</small></td>
+                            <th scope="row"><time datetime="14:30">14:30</time>–<time datetime="15:30">15:30</time></th>
                         </tr>
                         <tr>
-                            <th scope="row"><time datetime="15:00">15:00</time>–<time datetime="16:00">16:00</time></th>
-                            <td rowspan="3">Git &amp; GitHub<br><small>협업 워크플로</small></td>
-                            <td rowspan="3">REST API<br><small>서버 연동 실습</small></td>
+                            <th scope="row"><time datetime="15:30">15:30</time>–<time datetime="16:30">16:30</time></th>
                         </tr>
                         <tr>
-                            <th scope="row"><time datetime="16:00">16:00</time>–<time datetime="17:00">17:00</time></th>
-                            <td rowspan="2">웹 접근성<br><small>표준 점검</small></td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><time datetime="17:00">17:00</time>–<time datetime="18:00">18:00</time></th>
-                            <td>커리어 특강</td>
-                            <td>주간 회고</td>
+                            <th scope="row"><time datetime="16:30">16:30</time>–<time datetime="17:50">17:50</time></th>
                         </tr>
                     </tbody>
                 </table>
@@ -129,15 +121,17 @@
                 <details name="class-note" class="accordion" open>
                     <summary>과제 마감일</summary>
                     <ul>
-                        <li><time datetime="2026-07-24">07. 24.</time> — Vue.js 컴포넌트 실습 제출</li>
-                        <li><time datetime="2026-07-27">07. 27.</time> — 팀 프로젝트 중간 발표 <mark>중요</mark></li>
+                        <li><time datetime="2026-07-24">07. 24.</time> — HTML · CSS · JavaScript 과제 GitHub 등록</li>
+                        <li><time datetime="2026-07-26">07. 26.</time> — Transformer &amp; LLM 실습 보고서 <mark>중요</mark></li>
+                        <li><time datetime="2026-07-26">07. 26.</time> — HTML · CSS · JavaScript 과제 제출 <mark>중요</mark></li>
                     </ul>
                 </details>
                 <details name="class-note" class="accordion">
                     <summary>준비물</summary>
                     <ul>
                         <li>노트북 + 충전기 <kbd>필수</kbd></li>
-                        <li>Docker Desktop 설치 확인</li>
+                        <li>VS Code · Git 설치 확인</li>
+                        <li>Python 실습 환경 점검</li>
                     </ul>
                 </details>
             </section>
