@@ -1483,12 +1483,122 @@ aside select {
 }
 
 #weather-box {
-    margin-top: 0.75rem;
-    font-size: var(--fs-small);
+    margin-top: 1rem;
+    padding: 1rem;
+    min-height: 5.5rem;
+    border: 1px solid var(--rule-strong);
+    background: var(--panel-2);
+    color: var(--ink);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-#weather-box p {
+.weather-message,
+.weather-loading p,
+.weather-error {
     margin: 0;
+    color: var(--ink-2);
+    line-height: 1.6;
+}
+
+.weather-location {
+    margin: 0 0 0.8rem;
+    color: var(--ink);
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.weather-location::before {
+    content: "";
+    display: inline-block;
+    width: 0.5rem;
+    height: 0.5rem;
+    margin-right: 0.5rem;
+    border-radius: 50%;
+    background: var(--cobalt);
+    vertical-align: 0.08em;
+}
+
+.weather-metrics {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.6rem;
+    margin: 0;
+}
+
+.weather-metrics > div {
+    padding: 0.75rem;
+    background: var(--panel);
+    border: 1px solid var(--rule);
+}
+
+.weather-metrics dt {
+    color: var(--ink-2);
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.weather-metrics dd {
+    margin: 0.25rem 0 0;
+    color: var(--ink);
+    font-size: clamp(1.35rem, 4vw, 1.75rem);
+    font-weight: 700;
+    line-height: 1.1;
+    font-variant-numeric: tabular-nums;
+}
+
+.weather-unit {
+    margin-left: 0.15rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--ink-2);
+}
+
+.weather-loading {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+}
+
+.weather-spinner {
+    width: 1rem;
+    height: 1rem;
+    flex: 0 0 auto;
+    border: 2px solid var(--rule-strong);
+    border-top-color: var(--cobalt);
+    border-radius: 50%;
+    animation: weather-spin 0.8s linear infinite;
+}
+
+.weather-card[data-state="error"] {
+    border-color: #b42318;
+}
+
+.weather-error strong {
+    color: #b42318;
+}
+
+@keyframes weather-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .weather-spinner {
+        animation: none;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .weather-card[data-state="error"] {
+        border-color: #f97066;
+    }
+
+    .weather-error strong {
+        color: #f97066;
+    }
 }
 
 .game-list {

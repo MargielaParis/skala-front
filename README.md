@@ -1,7 +1,7 @@
 # SKALA-FRONT — 박기연
 
-SKALA 교육과정 **Full-stack Engineering (HTML · CSS · JavaScript, 강병호)** 실습 결과물입니다.
-개인 포털 "박기연의 유니버스"를 만들며 HTML 마크업 → CSS 스타일 → JavaScript 동작을 단계별로 구현했습니다.
+SKALA 교육과정 **Full-stack Engineering (HTML · CSS · JavaScript)** 실습 결과물입니다.
+개인 포털 "Kiyeon's Park"를 만들면서 HTML, CSS, JavaScript를 순서대로 적용했습니다.
 
 - 제출 저장소: https://github.com/MargielaParis/skala-front
 - 순수 HTML · CSS · JavaScript만 사용 (프레임워크·빌드 도구 없음)
@@ -67,13 +67,17 @@ html_kiyeon/                  ← 제출 루트
 | Up-Down 게임 | `script/upDown.js` | 1~50 무작위 숫자를 `prompt`/반복문으로 맞추기 |
 | 성적 계산기 | `script/grade.js` | 3과목 점수 입력 → 평균·합격 판정 |
 | 내 가방 보기 | `script/bag.js` | 소지품 객체 배열을 반복문으로 출력 |
-| 실시간 날씨 | `script/weatherAPI.js` + `realtimeInfo.js` | 도시 선택 시 `fetch`+`async/await`로 Open-Meteo에서 온도·습도 조회, `import`/`export` 모듈 분리 |
+| 실시간 날씨 2단계 | `script/weather.js` | 도시 선택 이벤트와 `fetch`/`async`/`await` 사용 |
+| 실시간 날씨 3단계 | `script/weatherAPI.js` + `realtimeInfo.js` | API 요청과 화면 표시를 `import`/`export`로 분리 |
+
+JavaScript는 별도 프레임워크나 공통 유틸 함수 없이 과제별 파일 안에서 직접 작성했습니다.
+값을 꺼내고 문자열을 만드는 과정도 줄여 쓰기보다는 순서가 보이도록 풀어서 작성했습니다.
 
 ## 두 가지 버전
 
 이 저장소는 같은 페이지를 두 형태로 담고 있습니다.
 
-- **루트 (스타일 버전)** — `trendy.css`를 적용한 완성본.
+- **루트 (스타일 버전)** — `trendy.css`를 적용한 화면.
 - **`plain/` (순수 마크업 버전)** — 스타일시트·`class`·인라인 `style` 없이 **시맨틱 HTML만**으로 작성.
   과제 2·3·4는 CSS 사용이 금지되어 있어(스타일은 CSS 단계에서 별도 적용), 이 요구를 지킨 버전입니다.
   자세한 내용은 [`plain/README.md`](plain/README.md) 참고.

@@ -1,36 +1,59 @@
-// 1. 방금 만든 weatherAPI.js 모듈에서 핵심 비동기 함수를 쏙 훔쳐옵니다.
-import { getLiveWeather } from './weatherAPI.js';
+import { getLiveWeather } from "./weatherAPI.js";
 
-const citySelect = document.querySelector('#city-select');
-const weatherBox = document.querySelector('#weather-box');
+var citySelect = document.querySelector("#city-select");
+var weatherBox = document.querySelector("#weather-box");
 
-citySelect.addEventListener('change', async function(event) {
+citySelect.addEventListener("change", async function(event) {
+    var selectedValue = event.target.value;
 
-    console.log("선택된 옵션의 값:", event.target.value); // 디버깅용 로그
-
-    const selectedValue = event.target.value;
     if (selectedValue === "none") {
-        weatherBox.innerHTML = "<p>도시를 선택하세요.</p>";
+        weatherBox.dataset.state = "idle";
+        weatherBox.innerHTML = '<p class="weather-message">도시를 선택하면 현재 날씨를 보여드립니다.</p>';
         return;
     }
 
-    const coords = selectedValue.split(',');
-    const cityName = citySelect.options[citySelect.selectedIndex].text;
+    var coords = selectedValue.split(",");
+    var lat = coords[0];
+    var lon = coords[1];
+    var selectedOption = citySelect.options[citySelect.selectedIndex];
+    var cityName = selectedOption.text;
 
-    weatherBox.innerHTML = "<p>모듈을 통해 실시간 수신 중... 📡</p>";
+    weatherBox.dataset.state = "loading";
 
-    // 2. 수입해온 비동기 모듈 함수를 실행해 결과만 딱 받아옵니다. (코드가 훨씬 간결해집니다!)
-    const weatherInfo = await getLiveWeather(coords[0], coords[1]);
+    var loadingHtml = "";
+    loadingHtml = loadingHtml + '<div class="weather-loading" aria-label="날씨 정보를 불러오는 중">';
+    loadingHtml = loadingHtml + '<span class="weather-spinner" aria-hidden="true"></span>';
+    loadingHtml = loadingHtml + "<p>현재 날씨를 불러오는 중입니다.</p>";
+    loadingHtml = loadingHtml + "</div>";
+    weatherBox.innerHTML = loadingHtml;
 
-    if (weatherInfo) {
-        weatherBox.innerHTML = `
-            <div style="background-color: #e8f8f5; border-left: 5px solid #16a085; padding: 15px; margin-top: 10px;">
-                <h4>모듈형 날씨 피드: ${cityName}</h4>
-                <p>🌡️ 기온: ${weatherInfo.temp}°C</p>
-                <p>💧 습도: ${weatherInfo.humidity}%</p>
-            </div>
-        `;
+    var weatherInfo = await getLiveWeather(lat, lon);
+
+    if (weatherInfo !== null) {
+        weatherBox.dataset.state = "success";
+
+        var resultHtml = "";
+        resultHtml = resultHtml + '<p class="weather-location">' + cityName + "</p>";
+        resultHtml = resultHtml + '<dl class="weather-metrics">';
+        resultHtml = resultHtml + "<div>";
+        resultHtml = resultHtml + '<dt><span aria-hidden="true">🌡️</span> 기온</dt>';
+        resultHtml = resultHtml + "<dd>" + weatherInfo.temp + '<span class="weather-unit">°C</span></dd>';
+        resultHtml = resultHtml + "</div>";
+        resultHtml = resultHtml + "<div>";
+        resultHtml = resultHtml + '<dt><span aria-hidden="true">💧</span> 습도</dt>';
+        resultHtml = resultHtml + "<dd>" + weatherInfo.humidity + '<span class="weather-unit">%</span></dd>';
+        resultHtml = resultHtml + "</div>";
+        resultHtml = resultHtml + "</dl>";
+
+        weatherBox.innerHTML = resultHtml;
     } else {
-        weatherBox.innerHTML = "<p>데이터를 불러오지 못했습니다.</p>";
+        weatherBox.dataset.state = "error";
+
+        var errorHtml = "";
+        errorHtml = errorHtml + '<p class="weather-error">';
+        errorHtml = errorHtml + "<strong>날씨 정보를 불러오지 못했습니다.</strong><br>";
+        errorHtml = errorHtml + "잠시 후 다시 도시를 선택해 주세요.";
+        errorHtml = errorHtml + "</p>";
+        weatherBox.innerHTML = errorHtml;
     }
 });
